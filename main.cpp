@@ -9,7 +9,9 @@
 //#include "template/templates.hpp"
 //#include "ctor/default_ctor.hpp"
 //#include "template/template_alias.hpp"
-#include "tic-tac-toe/Tic-Tac-Toe.h"
+//#include "tic-tac-toe/Tic-Tac-Toe.h"
+//#include"lambda/lambda.h"
+#include"rvalue/rvalue.h"
 
 int main(){
 
@@ -28,7 +30,7 @@ int main(){
 //
 //	decltype(a) x = 'a';
 //d
-	test();
+	test_rvalue();
 	return 0;
 }
 
