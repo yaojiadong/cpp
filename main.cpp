@@ -5,13 +5,19 @@
  *      Author: jiadong
  */
 
+#include<vector>
+#include<utility>
+#include<memory>
+
 //#include "typeid/typeid.hpp"
 //#include "template/templates.hpp"
 //#include "ctor/default_ctor.hpp"
 //#include "template/template_alias.hpp"
 //#include "tic-tac-toe/Tic-Tac-Toe.h"
-//#include"lambda/lambda.h"
+#include"lambda/lambda.h"
 #include"rvalue/rvalue.h"
+
+using namespace std;
 
 int main(){
 
@@ -29,8 +35,11 @@ int main(){
 //	cout<< typeid(a).name()<<endl;
 //
 //	decltype(a) x = 'a';
-//d
-	test_rvalue();
+//
+
+
+//	test_rvalue();
+	test_lambda();
 	return 0;
 }
 
