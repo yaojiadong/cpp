@@ -8,6 +8,8 @@
 #include<vector>
 #include<utility>
 #include<memory>
+#include<iostream>
+
 
 //#include "typeid/typeid.hpp"
 //#include "template/templates.hpp"
@@ -16,8 +18,13 @@
 //#include "tic-tac-toe/Tic-Tac-Toe.h"
 #include"lambda/lambda.h"
 #include"rvalue/rvalue.h"
+#include "parameter_pack_auto/par_pack_auto.h"
 
 using namespace std;
+
+#if __cplusplus
+#endif
+
 
 int main(){
 
@@ -39,7 +46,10 @@ int main(){
 
 
 //	test_rvalue();
-	test_lambda();
+//	test_lambda();
+
+
+	test_par_pack_auto();
 	return 0;
 }
 
