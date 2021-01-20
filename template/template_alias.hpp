@@ -25,7 +25,7 @@ template<int N>
 using int_exact = typename int_exact_traits<N>::type;
 
 
-
+void test_template_alias();
 
 
 #endif /* TEMPLATE_ALIAS_HPP_ */
