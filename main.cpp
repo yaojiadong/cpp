@@ -9,6 +9,7 @@
 #include<utility>
 #include<memory>
 #include<iostream>
+#include<unordered_map>
 
 
 //#include "typeid/typeid.hpp"
@@ -20,6 +21,7 @@
 #include"lambda/lambda.h"
 #include"rvalue/rvalue.h"
 #include "parameter_pack_auto/par_pack_auto.h"
+#include"structure_binding/structure_binding.h"
 
 using namespace std;
 
@@ -33,11 +35,15 @@ int main(){
 //	test_typeid_poly();
 
 //	test_templates();
-	test_template_alias();
+//	test_template_alias();
 
 //	test_rvalue();
 //	test_lambda();
-//	test_par_pack_auto();
+	test_par_pack_auto();
+
+//test_structure_binding();
+
+
 	return 0;
 }
 

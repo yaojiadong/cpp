@@ -71,7 +71,7 @@ template <auto Arg, auto... Args>
 void doPrint2()
 {
     Arg();
-    (Args(), ...);
+    (Args(), ...);  //(e op ...), where e is Arg(), folder operator is "," and ... is parameter pack
 }
 
 /*
@@ -131,11 +131,15 @@ void exe(T t, Rest... rest){
 
 /*
  * typed parameter pack can be executed in one function. c++17
+ * constexpr if: code that is instantiated depending on a compile-time condition.
+ * Without constexpr, the sizeof... is not evaluated at compile time
+ * It is possible that size 0 of the parameter pack could be passed to the function, but no matching function found.
+ * So it has to be evaluated at compile time.
  * */
 template<class T, class...Rest>
 void exe_in_one_fun(T t, Rest... rest){
 	t();
-	if constexpr (sizeof...(rest) > 0){
+	if constexpr (sizeof...(rest) > 0){  //operator: sizeof...
 		exe_in_one_fun(rest...);
 	}
 
