@@ -7,7 +7,7 @@
 
 
 #include "template_alias.hpp"
-
+#include<typeinfo>
 
 void test_template_alias(){
 

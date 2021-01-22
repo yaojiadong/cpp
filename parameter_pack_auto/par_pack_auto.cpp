@@ -5,6 +5,10 @@
  *      Author: jiadong
  */
 
+ /* non-type template parameters of class type
+  * only available with '-std=c++2a' or '-std=gnu++2a'
+  */
+
 #include<iostream>
 
 using namespace std;
