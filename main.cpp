@@ -9,7 +9,11 @@
 #include<utility>
 #include<memory>
 #include<iostream>
+#include<map>
 #include<unordered_map>
+#include<variant>
+#include<iomanip>
+#include<functional>
 
 
 //#include "typeid/typeid.hpp"
@@ -22,11 +26,13 @@
 #include"rvalue/rvalue.h"
 #include "parameter_pack_auto/par_pack_auto.h"
 #include"structure_binding/structure_binding.h"
+#include"node_handle/node_handle.h"
 
 using namespace std;
 
 #if __cplusplus
 #endif
+
 
 
 int main(){
@@ -39,9 +45,11 @@ int main(){
 
 //	test_rvalue();
 //	test_lambda();
-	test_par_pack_auto();
+//	test_par_pack_auto();
 
-//test_structure_binding();
+//  test_structure_binding();
+
+	test_node_handle();
 
 
 	return 0;
