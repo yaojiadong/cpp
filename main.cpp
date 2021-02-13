@@ -27,6 +27,7 @@
 #include "parameter_pack_auto/par_pack_auto.h"
 #include"structure_binding/structure_binding.h"
 #include"node_handle/node_handle.h"
+#include"pow/pow.h"
 
 using namespace std;
 
@@ -49,7 +50,10 @@ int main(){
 
 //  test_structure_binding();
 
-	test_node_handle();
+//	test_node_handle();
+
+
+//	test_pow();
 
 
 	return 0;
