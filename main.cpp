@@ -18,16 +18,18 @@
 
 //#include "typeid/typeid.hpp"
 //#include "template/templates.hpp"
-#include "template/template_alias.hpp"
+//#include "template/template_alias.hpp"
 //#include "ctor/default_ctor.hpp"
 //#include "template/template_alias.hpp"
 //#include "tic-tac-toe/Tic-Tac-Toe.h"
-#include"lambda/lambda.h"
-#include"rvalue/rvalue.h"
-#include "parameter_pack_auto/par_pack_auto.h"
-#include"structure_binding/structure_binding.h"
-#include"node_handle/node_handle.h"
-#include"pow/pow.h"
+//#include "lambda/lambda.h"
+//#include "rvalue/rvalue.h"
+//#include "parameter_pack_auto/par_pack_auto.h"
+//#include "structure_binding/structure_binding.h"
+//#include "node_handle/node_handle.h"
+//#include "pow/pow.h"
+//#include "data_structure/DLinkedList.hpp"
+
 
 using namespace std;
 
@@ -38,23 +40,16 @@ using namespace std;
 
 int main(){
 
-//	test_typeid();
-//	test_typeid_poly();
-
-//	test_templates();
-//	test_template_alias();
-
-//	test_rvalue();
-//	test_lambda();
-//	test_par_pack_auto();
-
-//  test_structure_binding();
-
-//	test_node_handle();
-
-
-//	test_pow();
-
+	//	test_typeid();
+	//	test_typeid_poly();
+	//	test_templates();
+	//	test_template_alias();
+	//	test_rvalue();
+	//	test_lambda();
+	//	test_par_pack_auto();
+	//  test_structure_binding();
+	//	test_node_handle();
+	//	test_pow();
 
 	return 0;
 }
