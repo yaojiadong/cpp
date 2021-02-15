@@ -28,7 +28,7 @@
 //#include "structure_binding/structure_binding.h"
 //#include "node_handle/node_handle.h"
 //#include "pow/pow.h"
-//#include "data_structure/DLinkedList.hpp"
+#include "data_structure/DLinkedList.hpp"
 
 
 using namespace std;
@@ -50,6 +50,12 @@ int main(){
 	//  test_structure_binding();
 	//	test_node_handle();
 	//	test_pow();
+
+	int elem = 5;
+	DLinkedList<int> lst;
+	lst.push_back(elem);
+	cout<<lst.back();
+
 
 	return 0;
 }

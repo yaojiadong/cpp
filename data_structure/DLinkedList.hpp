@@ -3,6 +3,11 @@
  *
  *  Created on: Feb 15, 2021
  *      Author: jiado
+ *
+ *      Note: do not separate declaration and definition of a template!!!
+ *      https://isocpp.org/wiki/faq/templates#templates-defn-vs-decl
+ *      https://stackoverflow.com/questions/115703/storing-c-template-function-definitions-in-a-cpp-file#:~:text=When%20used%20together%20with%20explicit,function%20code%20in%20cpp%20files.
+ *
  */
 
 #ifndef DATA_STRUCTURE_DLINKEDLIST_HPP_
@@ -28,7 +33,7 @@ class DLinkedList{
 
 private:
 
-	/* if take the node as an attribute of the linked list, the Node is not a template anymore.*/
+	/* If take the node as an attribute of the linked list, the Node is not a template anymore.*/
 //	class Node{
 //	private:
 //		E elem;
@@ -38,27 +43,66 @@ private:
 //	};
 
 public:
-	DLinkedList();
-	~DLinkedList();
+	DLinkedList(){
+		header = new Node<E>;
+		trailer = new Node<E>;
+		header->next = trailer;
+		trailer->pre = header;
+	}
 
-	void push_front(E&);
-	void pop_front();
-	void push_back(E&);
-	void pop_back();
-	const E& front() const;
-	const E& back() const;
-	bool empty() const;
+	~DLinkedList(){
+		while(!empty()){
+			pop_front();
+		}
+		delete header;
+		delete trailer;
+	}
+
+	void push_front(E& elem){addBefore(header->next, elem);}
+	void pop_front(){remove(header->next);}
+	void push_back(E& elem){addBefore(trailer, elem);}
+	void pop_back() {remove(trailer->pre);}
+
+	/*
+	 * Unlike member list::begin, which returns an iterator to this same element, this function returns a direct reference.
+	 * Calling this function on an empty container causes undefined behavior.
+	 */
+	const E& front() const {return header->next->elem;}
+
+	/*
+	 * Unlike member list::end, which returns an iterator just past this element, this function returns a direct reference.
+	 * Calling this function on an empty container causes undefined behavior.
+	 */
+	const E& back() const {return trailer->pre->elem;}
+	bool empty() const {return (header->next == trailer);}
 
 
 protected:  //local utilities, helper function for internal use
-	void addBefore(Node<E>* v, const E& e); //insert node before v
-	void remove(Node<E>* v); // remove node before v
+	/*
+	 * Insert node before v
+	 * */
+	void addBefore(Node<E>* v, const E& elem){
+		Node<E>* n = new Node<E>;
+		n->elem = elem;
+		n->pre = v->pre;
+		n->next = v;
+		v->pre->next = n;
+		v->pre = n;
+
+	}
+
+	void remove(Node<E>* v){
+		Node<E>* vpre = v->pre;
+		Node<E>* vnext = v->next;
+		vpre->next = vnext;
+		vnext->pre = vpre;
+		delete v;
+	}
 
 private:
 	Node<E>* header;
 	Node<E>* trailer;
 };
-
 
 
 
