@@ -44,6 +44,7 @@ private:
 
 public:
 	DLinkedList(){
+		sz = 0;
 		header = new Node<E>;
 		trailer = new Node<E>;
 		header->next = trailer;
@@ -58,9 +59,9 @@ public:
 		delete trailer;
 	}
 
-	void push_front(E& elem){addBefore(header->next, elem);}
+	void push_front(const E& elem){addBefore(header->next, elem);}
 	void pop_front(){remove(header->next);}
-	void push_back(E& elem){addBefore(trailer, elem);}
+	void push_back(const E& elem){addBefore(trailer, elem);}
 	void pop_back() {remove(trailer->pre);}
 
 	/*
@@ -75,7 +76,7 @@ public:
 	 */
 	const E& back() const {return trailer->pre->elem;}
 	bool empty() const {return (header->next == trailer);}
-
+	int size() const {return sz;}
 
 protected:  //local utilities, helper function for internal use
 	/*
@@ -88,18 +89,23 @@ protected:  //local utilities, helper function for internal use
 		n->next = v;
 		v->pre->next = n;
 		v->pre = n;
+		++sz;
 
 	}
 
 	void remove(Node<E>* v){
-		Node<E>* vpre = v->pre;
-		Node<E>* vnext = v->next;
-		vpre->next = vnext;
-		vnext->pre = vpre;
-		delete v;
+		if(!empty()){
+			Node<E>* vpre = v->pre;
+			Node<E>* vnext = v->next;
+			vpre->next = vnext;
+			vnext->pre = vpre;
+			delete v;
+			--sz;
+		}
 	}
 
 private:
+	int sz;
 	Node<E>* header;
 	Node<E>* trailer;
 };

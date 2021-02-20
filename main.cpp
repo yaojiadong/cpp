@@ -29,7 +29,11 @@
 //#include "node_handle/node_handle.h"
 //#include "pow/pow.h"
 #include "data_structure/DLinkedList.hpp"
-
+#include "data_structure/ArrayStack.hpp"
+#include "data_structure/ListStack.hpp"
+#include "data_structure/Deque.hpp"
+#include "data_structure/IteratorDLinkedList.hpp"
+#include "data_structure/Stack.hpp"
 
 using namespace std;
 
@@ -52,10 +56,31 @@ int main(){
 	//	test_pow();
 
 	int elem = 5;
-	DLinkedList<int> lst;
-	lst.push_back(elem);
-	cout<<lst.back();
+//	Stack<int, DLinkedList<int>> stack;
+//	stack.push_back(elem);
+//	cout<<stack.front();
 
+	Deque<int> deque;
+	deque.push_back(elem);
+	deque.push_back(elem+1);
+	auto it = deque.begin();
+	auto itt = deque.end();
+
+	cout<<*it<<" "<< *--itt;
+
+
+//	try{
+//		stack.pop_back();
+//		stack.pop_front();
+//	}catch(runtime_error& e){
+//		cout<<e.what();
+//	}
+
+//	cout<<lst.back();
+
+
+//	vector<int> vec;
+//	vector<int>::iterator
 
 	return 0;
 }
