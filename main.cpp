@@ -5,6 +5,7 @@
  *      Author: jiadong
  */
 
+#include<array>
 #include<vector>
 #include<utility>
 #include<memory>
@@ -34,7 +35,9 @@
 #include "data_structure/Deque.hpp"
 #include "data_structure/IteratorDLinkedList.hpp"
 #include "data_structure/Stack.hpp"
-
+#include "tree/LinkedBinaryTree.hpp"
+#include "tree/VBinaryTree.hpp"
+#include "tree/Vector.hpp"
 using namespace std;
 
 #if __cplusplus
@@ -55,18 +58,18 @@ int main(){
 	//	test_node_handle();
 	//	test_pow();
 
-	int elem = 5;
+//	int elem = 5;
 //	Stack<int, DLinkedList<int>> stack;
 //	stack.push_back(elem);
 //	cout<<stack.front();
 
-	Deque<int> deque;
-	deque.push_back(elem);
-	deque.push_back(elem+1);
-	auto it = deque.begin();
-	auto itt = deque.end();
-
-	cout<<*it<<" "<< *--itt;
+//	Deque<int> deque;
+//	deque.push_back(elem);
+//	deque.push_back(elem+1);
+//	auto it = deque.begin();
+//	auto itt = deque.end();
+//
+//	cout<<*it<<" "<< *--itt;
 
 
 //	try{
@@ -79,8 +82,48 @@ int main(){
 //	cout<<lst.back();
 
 
+//	LinkedBinaryTree<int> bt;
+//	bt.addRoot();
+//	bt.expandExternal(bt.root());
+//	cout<<bt.size();
+//	for(auto p: bt.positions()){
+//		cout<<*p<<' ';
+//	}
+
+//	Vector<int> vec;
+//	vec.insert(0, 5);
+//
+	VBinaryTree<int> vbt;
+	vbt.addRoot(5);
+	vbt.expandExternal(vbt.root());
+	VBinaryTree<int>::Position p{1};
+	vbt.expandExternal(p);
+//	cout<<vbt.size();
+	Vector<int> vec = vbt.getVector();
+	cout<<"capacity is "<<vec.getCapacity()<<endl;
+	for(int i=0; i<vec.size(); ++i){
+		cout<<vec[i]<<" ";
+	}
+
+	for(auto p: vbt.positions() ){
+//		if(p.isExternal()){}
+		try{
+		cout<<"At position "<<(*p)<< ", the value is"<<vec.at(*p)<<endl;
+		}catch(std::runtime_error& e){
+			cout<<e.what()<<endl;
+		}
+//		cout<<vec.at(*p)<<' ';
+	}
+
 //	vector<int> vec;
-//	vector<int>::iterator
+//	int* a = new int;
+//	vec[0] = a;
+
+//	std::array<double,10> arr{};
+//	for(auto a: arr){
+//		cout<<a<<" ";
+//	}
+
 
 	return 0;
 }

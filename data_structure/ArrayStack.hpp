@@ -4,7 +4,7 @@
  *  Created on: Feb 17, 2021
  *      Author: jiado
  */
-#include "exception.hpp"
+#include "Exception.hpp"
 
 
 /* Implement stack using array*/

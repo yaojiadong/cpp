@@ -9,8 +9,8 @@
 #define DATA_STRUCTURE_DEQUE_HPP_
 
 #include "DLinkedList.hpp"
+#include "Exception.hpp"
 #include "IteratorDLinkedList.hpp"
-#include "exception.hpp"
 
 /* Implement deque using Doubly linked list*/
 
