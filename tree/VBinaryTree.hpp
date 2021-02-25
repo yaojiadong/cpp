@@ -42,11 +42,13 @@ public:
 
 		bool isRoot() const {return index == 0;}
 
-		//TODO: how to identify the external node in a array based tree?
-//		bool isExternal() const {
-//
-//			return ((2*index+1>=vec.getCapacity()) || (vec[index*2+1]==nullptr && vec[index*2+2]==nullptr));
-//		}
+		//TODO: how to identify the external node in an array based tree?
+		bool isExternal() const {
+
+			E e{}; //default value is used to identify if the place is occupied or empty. If both children is empty, the node is external
+
+			return ((2*index+1>=vec.getCapacity()) || (vec[index*2+1]==e && vec[index*2+2]==e));
+		}
 
 		friend class VBinaryTree;
 	};
