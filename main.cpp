@@ -37,6 +37,7 @@
 #include "data_structure/Stack.hpp"
 #include "tree/LinkedBinaryTree.hpp"
 #include "tree/VBinaryTree.hpp"
+#include "tree/VBT.hpp"
 #include "tree/Vector.hpp"
 using namespace std;
 
@@ -94,27 +95,39 @@ int main(){
 //	vec.insert(0, 5);
 //
 	VBinaryTree<int> vbt;
+//	VBT<int> vbt;
 	vbt.addRoot(5);
-	vbt.expandExternal(vbt.root());
-	VBinaryTree<int>::Position p{1};
-	vbt.expandExternal(p);
-//	cout<<vbt.size();
-	Vector<int> vec = vbt.getVector();
-	cout<<"capacity is "<<vec.getCapacity()<<endl;
-	for(int i=0; i<vec.size(); ++i){
-		cout<<vec[i]<<" ";
-	}
+	VBinaryTree<int>::Position p0{0};
+	vbt.expandExternal(p0, 1, 10);
+//	vbt.expandExternal(vbt.root(), 1, 10);
+	VBinaryTree<int>::Position p{2};
+	vbt.expandExternal(p,3,6);
 
-	for(auto p: vbt.positions() ){
-//		if(p.isExternal()){}
-		try{
-		cout<<"At position "<<(*p)<< ", the value is"<<vec.at(*p)<<endl;
-		}catch(std::runtime_error& e){
-			cout<<e.what()<<endl;
-		}
-//		cout<<vec.at(*p)<<' ';
-	}
+	VBinaryTree<int>::Position p5{5};
+	vbt.expandExternal(p5,23,26);
 
+//	cout<<p0.isExternal();
+	cout<<"size is "<<vbt.size()<<endl;
+	cout<<"capacity is "<<vbt.capacity()<<endl;
+
+//	Vector<int> vec = vbt.getVector();
+//	cout<<"capacity is "<<vec.getCapacity()<<endl;
+//	for(int i=0; i<vec.size(); ++i){
+//		cout<<*(vec.at(i))<<" ";
+//	}
+//	cout<<'\n';
+
+//	for(auto p: vbt.positions() ){
+////		if(p.isExternal()){}
+//		try{
+//		cout<<"At position "<<(*p)<< ", the value is"<<vec.at(*p)<<endl;
+//		}catch(std::runtime_error& e){
+//			cout<<e.what()<<endl;
+//		}
+////		cout<<vec.at(*p)<<' ';
+//	}
+	vbt.printVector();
+	vbt.printTree();
 //	vector<int> vec;
 //	int* a = new int;
 //	vec[0] = a;

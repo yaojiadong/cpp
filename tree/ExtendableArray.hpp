@@ -23,7 +23,7 @@ public:
 
 	virtual bool empty() const {return n==0;}
 
-	virtual T& operator[](int i){return *(arr+i);}
+	virtual T& operator[](int i) const {return arr[i];}//*(arr+i);}
 
 	virtual T& at(int i){if(i>=n || i<0) throw std::runtime_error("Index out of bound"); return arr[i];}
 
@@ -43,7 +43,6 @@ public:
 
 	virtual void reserve(int N){
 		if(capacity>N) return;
-//		T* A = new T[N];
 		T* A = new T [N];
 		for(int i=0; i<n; ++i){
 			A[i] = arr[i];
