@@ -36,6 +36,7 @@
 #include "data_structure/IteratorDLinkedList.hpp"
 #include "data_structure/Stack.hpp"
 #include "tree/test_tree.hpp"
+#include "design_pattern/observer/test_observer.hpp"
 using namespace std;
 
 #if __cplusplus
@@ -56,7 +57,9 @@ int main(){
 	//	test_node_handle();
 	//	test_pow();
 
-	test_tree();
+	//	test_tree();
+
+	test_observer();
 
 
 	return 0;

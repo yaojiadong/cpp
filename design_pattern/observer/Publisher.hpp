@@ -1,20 +1,25 @@
 #ifndef PUBLISHER
 #define PUBLISHER
 
+/*
+ * Subscriber acts as observer. Publisher acts as subject.
+ * */
+
 #include <memory>
 #include <list>
-#include "Subscriber.h"
+
+#include "ISubscriber.hpp"
 
 class Publisher {
 public:
 
 	//default ctor and detor
 
-	void subscribe(Subscriber* sub) {
+	void subscribe(ISubscriber* sub) {
 		vec.push_back(sub);
 	}
 
-	void unsubscribe(Subscriber* sub) {
+	void unsubscribe(ISubscriber* sub) {
 		vec.remove(sub);
 	}
 
@@ -35,12 +40,12 @@ public:
 	}
 
 	void onClick() {
-		this->msg = "Clicked";
+		this->msg = "New message -- Click action";
 		notifySubscribers();
 	}
 
 private:
-	std::list<Subscriber*> vec;
+	std::list<ISubscriber*> vec;
 //	std::list<std::shared_ptr<Subscriber>> vec;
 	std::string msg;
 };
