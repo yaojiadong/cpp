@@ -15,22 +15,22 @@ public:
 
 	//default ctor and detor
 
-	void subscribe(ISubscriber* sub) {
-		vec.push_back(sub);
-	}
-
-	void unsubscribe(ISubscriber* sub) {
-		vec.remove(sub);
-	}
-
-	/*Using smart pointer*/
-//	void subscribe(std::shared_ptr<Subscriber> sub) {
+//	void subscribe(ISubscriber* sub) {
 //		vec.push_back(sub);
 //	}
 //
-//	void unsubscribe(std::shared_ptr<Subscriber> sub) {
+//	void unsubscribe(ISubscriber* sub) {
 //		vec.remove(sub);
 //	}
+
+	/*Using smart pointer*/
+	void subscribe(std::shared_ptr<ISubscriber> sub) {
+		vec.push_back(sub);
+	}
+
+	void unsubscribe(std::shared_ptr<ISubscriber> sub) {
+		vec.remove(sub);
+	}
 
 	void notifySubscribers() {
 //		for (auto s : vec) {
@@ -45,8 +45,8 @@ public:
 	}
 
 private:
-	std::list<ISubscriber*> vec;
-//	std::list<std::shared_ptr<Subscriber>> vec;
+//	std::list<ISubscriber*> vec;
+	std::list<std::shared_ptr<ISubscriber>> vec;
 	std::string msg;
 };
 
