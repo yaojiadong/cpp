@@ -3,11 +3,13 @@
 
 #include <iostream>
 #include <thread>
-#include "Singleton.h"
+#include "Singleton.hpp"
+
+#include "test_singleton.hpp"
 
 constexpr int LOOPS = 10;
 
-int test_singleton()
+void test_singleton()
 {
 
 	//std::cout << Singleton::getinstance().getstring();
@@ -33,6 +35,4 @@ int test_singleton()
 
 	t1.join();
 	t2.join();
-
-	return 0;
 }

@@ -36,7 +36,10 @@
 #include "data_structure/IteratorDLinkedList.hpp"
 #include "data_structure/Stack.hpp"
 #include "tree/test_tree.hpp"
+#include "design_pattern/adapter/test_adapter.hpp"
+#include "design_pattern/bridge/test_bridge.hpp"
 #include "design_pattern/observer/test_observer.hpp"
+#include "design_pattern/singleton/test_singleton.hpp"
 using namespace std;
 
 #if __cplusplus
@@ -46,20 +49,23 @@ using namespace std;
 
 int main(){
 
-	//	test_typeid();
-	//	test_typeid_poly();
-	//	test_templates();
-	//	test_template_alias();
-	//	test_rvalue();
-	//	test_lambda();
-	//	test_par_pack_auto();
-	//  test_structure_binding();
-	//	test_node_handle();
-	//	test_pow();
+//	test_typeid();
+//	test_typeid_poly();
+//	test_templates();
+//	test_template_alias();
+//	test_rvalue();
+//	test_lambda();
+//	test_par_pack_auto();
+//	test_structure_binding();
+//	test_node_handle();
+//	test_pow();
 
-	//	test_tree();
+//	test_tree();
 
-	test_observer();
+//	test_adapter();
+//	test_bridge();
+//	test_observer();
+	test_singleton();
 
 
 	return 0;
