@@ -17,18 +17,19 @@
 #include<functional>
 
 
-//#include "typeid/typeid.hpp"
-//#include "template/templates.hpp"
-//#include "template/template_alias.hpp"
-//#include "ctor/default_ctor.hpp"
-//#include "template/template_alias.hpp"
-//#include "tic-tac-toe/Tic-Tac-Toe.h"
-//#include "lambda/lambda.h"
-//#include "rvalue/rvalue.h"
-//#include "parameter_pack_auto/par_pack_auto.h"
-//#include "structure_binding/structure_binding.h"
-//#include "node_handle/node_handle.h"
-//#include "pow/pow.h"
+#include "typeid/typeid.hpp"
+#include "template/templates.hpp"
+#include "template/template_alias.hpp"
+#include "ctor/default_ctor.hpp"
+#include "template/template_alias.hpp"
+#include "tic-tac-toe/Tic-Tac-Toe.h"
+#include "lambda/lambda.h"
+#include "rvalue/rvalue.h"
+#include "parameter_pack_auto/par_pack_auto.h"
+#include "structure_binding/structure_binding.h"
+#include "node_handle/node_handle.h"
+#include "pow/pow.h"
+
 #include "data_structure/DLinkedList.hpp"
 #include "data_structure/ArrayStack.hpp"
 #include "data_structure/ListStack.hpp"
@@ -40,6 +41,8 @@
 #include "design_pattern/bridge/test_bridge.hpp"
 #include "design_pattern/observer/test_observer.hpp"
 #include "design_pattern/singleton/test_singleton.hpp"
+
+#include "variant/variant.h"
 using namespace std;
 
 #if __cplusplus
@@ -65,8 +68,9 @@ int main(){
 //	test_adapter();
 //	test_bridge();
 //	test_observer();
-	test_singleton();
+//	test_singleton();
 
+	test_variant();
 
 	return 0;
 }
