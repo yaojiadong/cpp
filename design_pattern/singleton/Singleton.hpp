@@ -9,8 +9,8 @@ public:
 	//delete copy ctor
 	Singleton(Singleton&) = delete;
 
-	//delete assignment ctor
-	void operator= (const Singleton&) = delete;
+	//delete copy assignment operator
+	Singleton& operator= (const Singleton&) = delete;
 
 
 	static Singleton& getInstance() {
