@@ -13,7 +13,7 @@
 
 class Web_dialog : public Dialog{
 public:
-	IButton* create_button() override {return new HTML_button;}
+	std::unique_ptr<IButton> create_button() override {return std::make_unique<HTML_button>();}
 };
 
 #endif /* DESIGN_PATTERN_FACTORY_METHOD_WEB_DIALOG_H_ */

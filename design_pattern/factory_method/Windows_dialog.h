@@ -14,7 +14,7 @@
 
 class Windows_dialog : public Dialog{
 public:
-	IButton* create_button() override {return new Windows_button;}
+	std::unique_ptr<IButton> create_button() override {return std::make_unique<Windows_button>();}
 };
 
 

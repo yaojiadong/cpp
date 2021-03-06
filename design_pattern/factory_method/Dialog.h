@@ -10,6 +10,7 @@
 
 
 #include "IButton.h"
+#include <memory>
 
 class Dialog{
 public:
@@ -18,14 +19,13 @@ public:
 
 	// this method can be used in subclass that creates different types of buttons.
 	std::string render(){
-		IButton* button = this->create_button();
+		std::unique_ptr<IButton> button = this->create_button();
 		std::string s = "Dialog creates " + button->render();
 
-		delete button;
 		return s;
 	}
 
-	virtual IButton* create_button() = 0;
+	virtual std::unique_ptr<IButton> create_button() = 0;
 
 private:
 
