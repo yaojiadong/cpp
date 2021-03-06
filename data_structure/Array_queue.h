@@ -5,8 +5,8 @@
  *      Author: jiado
  */
 
-#ifndef DATA_STRUCTURE_ARRAYQUEUE_HPP_
-#define DATA_STRUCTURE_ARRAYQUEUE_HPP_
+#ifndef DATA_STRUCTURE_ARRAY_QUEUE_H_
+#define DATA_STRUCTURE_ARRAY_QUEUE_H_
 
 
 /* Implement a queue using array
@@ -16,4 +16,4 @@
 
 
 
-#endif /* DATA_STRUCTURE_ARRAYQUEUE_HPP_ */
+#endif /* DATA_STRUCTURE_ARRAY_QUEUE_H_ */

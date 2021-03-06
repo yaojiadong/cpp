@@ -6,10 +6,11 @@
  */
 
 //#include<exception>
-#include"DLinkedList.hpp"
 #include<string>
 #include<stdexcept>
-#include "Exception.hpp"
+
+#include "Doubly_linked_list.h"
+#include "Exception.h"
 
 //using namespace std;
 
@@ -25,12 +26,12 @@
  * */
 
 template<class T>
-class ListStack{
+class List_stack{
 
 public:
 //	Stack():sz{0},lst{}{}
-	ListStack():sz{}{}
-	~ListStack(){}
+	List_stack():sz{}{}
+	~List_stack(){}
 
 
 	void push(const T& elem){
@@ -58,7 +59,7 @@ public:
 	}
 
 private:
-	DLinkedList<T> lst;
+	Doubly_linked_list<T> lst;
 	int sz;
 
 };

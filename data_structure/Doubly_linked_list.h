@@ -10,14 +10,14 @@
  *
  */
 
-#ifndef DATA_STRUCTURE_DLINKEDLIST_HPP_
-#define DATA_STRUCTURE_DLINKEDLIST_HPP_
+#ifndef DATA_STRUCTURE_DOUBLY_LINKED_LIST_H_
+#define DATA_STRUCTURE_DOUBLY_LINKED_LIST_H_
 
 //#include "Node.hpp"
 
 /* The declaration is a must for declaration of the Node class, where the friend class is declared. */
 template<typename E>
-class DLinkedList;
+class Doubly_linked_list;
 
 template<typename E>
 class Node{
@@ -25,11 +25,11 @@ private:
 	E elem;
 	Node* pre;
 	Node* next;
-	friend class DLinkedList<E>;
+	friend class Doubly_linked_list<E>;
 };
 
 template<typename E>
-class DLinkedList{
+class Doubly_linked_list{
 
 private:
 
@@ -43,7 +43,7 @@ private:
 //	};
 
 public:
-	DLinkedList(){
+	Doubly_linked_list(){
 		sz = 0;
 		header = new Node<E>;
 		trailer = new Node<E>;
@@ -51,7 +51,7 @@ public:
 		trailer->pre = header;
 	}
 
-	~DLinkedList(){
+	~Doubly_linked_list(){
 		while(!empty()){
 			pop_front();
 		}
@@ -112,4 +112,4 @@ private:
 
 
 
-#endif /* DATA_STRUCTURE_DLINKEDLIST_HPP_ */
+#endif /* DATA_STRUCTURE_DOUBLY_LINKED_LIST_H_ */

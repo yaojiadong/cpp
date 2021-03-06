@@ -1,41 +1,41 @@
 /*
- * DequeStack.hpp
+ * DequeQueue.hpp
  *
  *  Created on: Feb 17, 2021
  *      Author: jiado
  */
 
-#ifndef DATA_STRUCTURE_DEQUESTACK_HPP_
-#define DATA_STRUCTURE_DEQUESTACK_HPP_
+#ifndef DATA_STRUCTURE_DEQUE_QUEUE_H_
+#define DATA_STRUCTURE_DEQUE_QUEUE_H_
 
-#include"Deque.hpp"
+#include "Deque.h"
 
-/* Implement a stack using deque, which uses doubly linked list.
+/* Implement a queue using deque, which uses doubly linked list.
  * This is called adapter design pattern
  * */
 
 template<class T>
-class DequeStack{
+class Deque_queue{
 public:
-	DequeStack():deque{}{}
-	~DequeStack(){}
+	Deque_queue():deque{}{}
+	~Deque_queue(){}
 
 	void push_back(const T& elem){
 		deque.push_back(elem);
 	}
 
 	void pop_front(){
-		if(empty()) throw StackEmpty("Pop front of empty stack");
+		if(empty()) throw QueueEmpty("Pop front of empty queue");
 		deque.pop_front();
 	}
 
 	const T& back() const{
-		if(empty()) throw StackEmpty("Empty stack");
+		if(empty()) throw QueueEmpty("Empty queue");
 		return deque.back();
 	}
 
 	const T& front() const{
-		if(empty()) throw StackEmpty("Empty stack");
+		if(empty()) throw QueueEmpty("Empty queue");
 		return deque.front();
 	}
 
@@ -51,4 +51,4 @@ private :
 	Deque<T> deque;
 };
 
-#endif /* DATA_STRUCTURE_DEQUESTACK_HPP_ */
+#endif /* DATA_STRUCTURE_DEQUE_QUEUE_H_ */

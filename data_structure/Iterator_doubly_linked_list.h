@@ -5,8 +5,8 @@
  *      Author: jiado
  */
 
-#ifndef DATA_STRUCTURE_ITERATORDLINKEDLIST_HPP_
-#define DATA_STRUCTURE_ITERATORDLINKEDLIST_HPP_
+#ifndef DATA_STRUCTURE_ITERATOR_DOUBLY_LINKED_LIST_H_
+#define DATA_STRUCTURE_ITERATOR_DOUBLY_LINKED_LIST_H_
 
 
 /*
@@ -16,7 +16,7 @@
 
 
 template<typename E>
-class IteratorDLinkedList{
+class Iterator_doubly_linked_list{
 
 private:
 
@@ -25,7 +25,7 @@ private:
 		E elem;
 		Node* pre;
 		Node* next;
-		friend class IteratorDLinkedList;
+		friend class Iterator_doubly_linked_list;
 	};
 
 public:
@@ -74,7 +74,7 @@ public:
 		/*
 		 * Allow IteratorDLinkedList to access to the private members of Iterator
 		 * */
-		friend class IteratorDLinkedList;
+		friend class Iterator_doubly_linked_list;
 
 	private:
 		Node* node;
@@ -86,7 +86,7 @@ public:
 	};
 
 public:
-	IteratorDLinkedList(){
+	Iterator_doubly_linked_list(){
 		sz = 0;
 		header = new Node;
 		trailer = new Node;
@@ -94,7 +94,7 @@ public:
 		trailer->pre = header;
 	}
 
-	~IteratorDLinkedList(){
+	~Iterator_doubly_linked_list(){
 		while(!empty()){
 			pop_front();
 		}
@@ -159,4 +159,4 @@ private:
 };
 
 
-#endif /* DATA_STRUCTURE_ITERATORDLINKEDLIST_HPP_ */
+#endif /* DATA_STRUCTURE_ITERATOR_DOUBLY_LINKED_LIST_H_ */

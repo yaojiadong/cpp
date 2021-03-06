@@ -5,8 +5,8 @@
  *      Author: jiado
  */
 
-#ifndef DATA_STRUCTURE_EXCEPTION_HPP_
-#define DATA_STRUCTURE_EXCEPTION_HPP_
+#ifndef DATA_STRUCTURE_EXCEPTION_H_
+#define DATA_STRUCTURE_EXCEPTION_H_
 
 #include<string>
 #include<stdexcept>
@@ -31,4 +31,4 @@ public:
 	QueueEmpty(const std::string& s):std::runtime_error(s){}
 };
 
-#endif /* DATA_STRUCTURE_EXCEPTION_HPP_ */
+#endif /* DATA_STRUCTURE_EXCEPTION_H_ */

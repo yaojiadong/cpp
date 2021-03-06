@@ -5,18 +5,18 @@
  *      Author: jiado
  */
 
-#ifndef DATA_STRUCTURE_DEQUE_HPP_
-#define DATA_STRUCTURE_DEQUE_HPP_
+#ifndef DATA_STRUCTURE_DEQUE_H_
+#define DATA_STRUCTURE_DEQUE_H_
 
-#include "DLinkedList.hpp"
-#include "Exception.hpp"
-#include "IteratorDLinkedList.hpp"
+#include "Doubly_linked_list.h"
+#include "Exception.h"
+#include "Iterator_doubly_linked_list.h"
 
 /* Implement deque using Doubly linked list*/
 
 template<class T>
 class Deque{
-	using iterator = IteratorDLinkedList<T>::Iterator;
+	using iterator = Iterator_doubly_linked_list<T>::Iterator;
 public:
 	Deque(int n=0):sz{n},lst{}{}
 	~Deque(){}
@@ -74,9 +74,9 @@ private:
 
 	int sz;
 //	DLinkedList<T> lst;
-	IteratorDLinkedList<T> lst;
+	Iterator_doubly_linked_list<T> lst;
 
 };
 
 
-#endif /* DATA_STRUCTURE_DEQUE_HPP_ */
+#endif /* DATA_STRUCTURE_DEQUE_H_ */

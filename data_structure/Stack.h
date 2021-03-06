@@ -5,10 +5,10 @@
  *      Author: jiado
  */
 
-#ifndef DATA_STRUCTURE_STACK_HPP_
-#define DATA_STRUCTURE_STACK_HPP_
+#ifndef DATA_STRUCTURE_STACK_H_
+#define DATA_STRUCTURE_STACK_H_
 
-#include"Deque.hpp"
+#include "Deque.h"
 
 template<class T, class Container=Deque<T>>
 class Stack{
@@ -47,4 +47,4 @@ private :
 	Container container;
 };
 
-#endif /* DATA_STRUCTURE_STACK_HPP_ */
+#endif /* DATA_STRUCTURE_STACK_H_ */
