@@ -17,30 +17,31 @@
 #include<functional>
 
 
-#include "typeid/typeid.hpp"
-#include "template/templates.hpp"
-#include "template/template_alias.hpp"
-#include "ctor/default_ctor.hpp"
-#include "template/template_alias.hpp"
-#include "tic-tac-toe/Tic-Tac-Toe.h"
-#include "lambda/lambda.h"
-#include "rvalue/rvalue.h"
-#include "parameter_pack_auto/par_pack_auto.h"
-#include "structure_binding/structure_binding.h"
-#include "node_handle/node_handle.h"
-#include "pow/pow.h"
-
-#include "data_structure/DLinkedList.hpp"
-#include "data_structure/ArrayStack.hpp"
-#include "data_structure/ListStack.hpp"
-#include "data_structure/Deque.hpp"
-#include "data_structure/IteratorDLinkedList.hpp"
-#include "data_structure/Stack.hpp"
-#include "tree/test_tree.hpp"
-#include "design_pattern/adapter/test_adapter.hpp"
-#include "design_pattern/bridge/test_bridge.hpp"
-#include "design_pattern/observer/test_observer.hpp"
-#include "design_pattern/singleton/test_singleton.hpp"
+//#include "typeid/typeid.hpp"
+//#include "template/templates.hpp"
+//#include "template/template_alias.hpp"
+//#include "ctor/default_ctor.hpp"
+//#include "template/template_alias.hpp"
+//#include "tic-tac-toe/Tic-Tac-Toe.h"
+//#include "lambda/lambda.h"
+//#include "rvalue/rvalue.h"
+//#include "parameter_pack_auto/par_pack_auto.h"
+//#include "structure_binding/structure_binding.h"
+//#include "node_handle/node_handle.h"
+//#include "pow/pow.h"
+//
+//#include "data_structure/DLinkedList.hpp"
+//#include "data_structure/ArrayStack.hpp"
+//#include "data_structure/ListStack.hpp"
+//#include "data_structure/Deque.hpp"
+//#include "data_structure/IteratorDLinkedList.hpp"
+//#include "data_structure/Stack.hpp"
+//#include "tree/test_tree.hpp"
+//#include "design_pattern/adapter/test_adapter.hpp"
+//#include "design_pattern/bridge/test_bridge.hpp"
+//#include "design_pattern/observer/test_observer.hpp"
+//#include "design_pattern/singleton/test_singleton.hpp"
+#include "design_pattern/factory_method/Test_factory_method.h"
 
 #include "variant/variant.h"
 using namespace std;
@@ -70,7 +71,8 @@ int main(){
 //	test_observer();
 //	test_singleton();
 
-	test_variant();
+//	test_variant();
+	test_factory_method();
 
 	return 0;
 }
