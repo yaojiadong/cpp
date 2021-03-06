@@ -1,11 +1,11 @@
 // Singleton.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
+#include "test_singleton.h"
+
 #include <iostream>
 #include <thread>
-#include "Singleton.hpp"
-
-#include "test_singleton.hpp"
+#include "Singleton.h"
 
 constexpr int LOOPS = 10;
 

@@ -3,7 +3,7 @@
 #define SUBSCRIBER
 
 #include "ISubscriber.h"
-#include "Publisher.hpp"
+#include "Publisher.h"
 
 class Subscriber : public ISubscriber {
 

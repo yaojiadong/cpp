@@ -6,7 +6,7 @@
  */
 
 
-#include "test_observer.hpp"
+#include "test_observer.h"
 
 #include "Client.h"
 

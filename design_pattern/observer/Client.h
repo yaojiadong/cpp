@@ -4,8 +4,8 @@
 
 #include <iostream>
 
-#include "Publisher.hpp"
-#include "Subscriber.hpp"
+#include "Publisher.h"
+#include "Subscriber.h"
 
 
 class Client{
