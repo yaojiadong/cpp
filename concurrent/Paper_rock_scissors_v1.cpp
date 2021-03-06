@@ -13,11 +13,11 @@
 #include <mutex>
 #include <stdexcept>
 
-#include "Paper_Rock_Scissors_v1.h"
+#include "Test_paper_rock_scissors_v1.h"
 
 constexpr int RUN=5000;
 
-class Paper_Rock_Scissors{
+class Paper_rock_scissors{
 
 public:
 	enum Choice{PAPER, ROCK,SCISSORS};
@@ -115,9 +115,9 @@ public:
 };
 
 
-int test_paper_rock_scissors1(){
+int test_paper_rock_scissors_v1(){
 
-	Paper_Rock_Scissors prc;
+	Paper_rock_scissors prc;
 
 	std::thread player{[&]{prc.playerChoice();}};
 	std::thread computer{[&]{prc.computerChoice();}};

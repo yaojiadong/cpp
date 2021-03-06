@@ -13,7 +13,7 @@
 #include <string>
 #include <future>
 
-#include "Paper_Rock_Scissors_v2.h"
+#include "Test_paper_rock_scissors_v2.h"
 
 enum Choice{PAPER, ROCK,SCISSORS};
 
@@ -76,7 +76,7 @@ void arbitration(Choice pc, Choice cc){
 }
 
 
-int test_paper_rock_scissors2(){
+int test_paper_rock_scissors_v2(){
 
 	int num=5000;
 	while(num--){

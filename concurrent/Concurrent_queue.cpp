@@ -4,9 +4,10 @@
 #include <mutex>
 #include <stdexcept>
 #include <thread>
+#include "Test_concurrent_queue.h"
 
 template<typename T, uint64_t SIZE = 4096, uint64_t MAX_SPIN_ON_BUSY = 40000000>
-class ConcurrentQueue {
+class Concurrent_queue {
 private:
     static constexpr unsigned Log2(unsigned n, unsigned p = 0) {
         return (n <= 1) ? p : Log2(n / 2, p + 1);
@@ -25,7 +26,16 @@ private:
     std::mutex mLock;
     uint64_t mReadPtr = 0;
     uint64_t mWritePtr = 0;
-    uint64_t sz = 0;
+    /*
+     * With compiler optimization, O1, O2 ... the thread consumer is not started.
+     * Since the peek() is optimized to be false forever.
+     * The sz must be qualified as volatile to force the program to evaluate it regardless of optimization.
+     *
+     * Wiki: the volatile keyword indicates that a value may change between different accesses,
+     * even if it does not appear to be modified. This keyword prevents an optimizing compiler
+     * from optimizing away subsequent reads or writes and thus incorrectly reusing a stale value or omitting writes
+     * */
+    volatile uint64_t sz = 0;
 
 public:
 
@@ -114,13 +124,13 @@ public:
 };
 
 template<typename T, uint64_t SIZE, uint64_t MAX_SPIN_ON_BUSY>
-const T ConcurrentQueue<T, SIZE, MAX_SPIN_ON_BUSY>::mEmpty = T{ };
+const T Concurrent_queue<T, SIZE, MAX_SPIN_ON_BUSY>::mEmpty = T{ };
 
-int test_concurrentQueue(int, char**) {
+int test_concurrent_queue() {
 	std::mutex mTask;
     using Functor = std::function<void()>;
 
-    ConcurrentQueue<Functor> queue;
+    Concurrent_queue<Functor> queue;
 
     /******************************** Test bug in the queue ********************************************/
 //    std::cout<<"Before insert, queue count is "<<queue.getCount()<<std::endl;
@@ -138,6 +148,7 @@ int test_concurrentQueue(int, char**) {
 //            	auto task = queue.pop();
 //            	std::cout<<"assignment done"<<std::endl;
 
+            	std::cout << "Here is consumer\n";
             	 /* Consider above statement: pop return a reference, then a new push is done, afterwards the assignment is done.
             	  * So the task is pointing to the newly pushed task. The alternative way is to pass a reference argument.*/
             	Functor task;
@@ -151,6 +162,7 @@ int test_concurrentQueue(int, char**) {
 
         uint64_t counter = 0;
         while (true) {
+        	std::cout << "Here is producer\n";
             auto taskId = counter++;
             auto newTask = Functor([ = ] {
                 std::cout << "Running task " << taskId << std::endl << std::flush;
@@ -161,7 +173,7 @@ int test_concurrentQueue(int, char**) {
             	queue.push(newTask);
             }catch(std::runtime_error &e){
             	 std::cout <<e.what()<<std::endl<< std::flush;
-//            	 std::this_thread::sleep_for(std::chrono::seconds{5});
+            	 std::this_thread::sleep_for(std::chrono::seconds{1});
             }
 
         }

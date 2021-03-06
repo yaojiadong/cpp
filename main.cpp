@@ -43,6 +43,8 @@
 //#include "design_pattern/singleton/test_singleton.hpp"
 #include "design_pattern/factory_method/Test_factory_method.h"
 
+#include "concurrent/Test_concurrent_queue.h"
+
 #include "variant/variant.h"
 using namespace std;
 
@@ -72,7 +74,9 @@ int main(){
 //	test_singleton();
 
 //	test_variant();
-	test_factory_method();
+//	test_factory_method();
+
+	test_concurrent_queue();
 
 	return 0;
 }
