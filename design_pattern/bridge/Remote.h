@@ -14,31 +14,34 @@
  *                  grant of a patent or the registration of a utility model
  *                  or design.
  */
-#ifndef SQUAREPEGADAPTER_HPP_
-#define SQUAREPEGADAPTER_HPP_
+#ifndef REMOTE_HPP_
+#define REMOTE_HPP_
 
 /*
- * Is the square peg fit to the round hole?
- * Since the round hole only accepts round peg,
- * the square peg adapter facilitates the check if a square peg fits the round hole.
+ * Remote is abstraction. IDevice is interface for different implementations.
  * */
 
-#include <cmath>
-#include "RoundPeg.hpp"
-#include "SquarePeg.hpp"
+#include "IDevice.h"
 
-
-class SquarePegAdapter : public RoundPeg{
-
+class Remote{
 public:
-	SquarePegAdapter(SquarePeg sp):square_peg_{sp}{}
+	Remote(IDevice& device)
+	: device_{device}
+	{}
 
-	int radius() const override  {return static_cast<int>(square_peg_.width()*std::sqrt(2)*2);}
+	void togglePower(){device_.isEnabled()? device_.disable() : device_.enable();}
+
+	void volumeDown(){device_.setVolume(device_.getVolume()-1);}
+
+	void volumeUp(){device_.setVolume(device_.getVolume()+1);}
+
+	void channelDown(){device_.setChannel(device_.getChannel()-1);}
+
+	void channelUp(){device_.setChannel(device_.getChannel()+1);}
 
 private:
-	SquarePeg square_peg_;
+	IDevice& device_;
 };
 
 
-
-#endif /* SQUAREPEGADAPTER_HPP_ */
+#endif /* REMOTE_HPP_ */

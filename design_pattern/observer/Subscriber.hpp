@@ -2,7 +2,7 @@
 #ifndef SUBSCRIBER
 #define SUBSCRIBER
 
-#include "ISubscriber.hpp"
+#include "ISubscriber.h"
 #include "Publisher.hpp"
 
 class Subscriber : public ISubscriber {

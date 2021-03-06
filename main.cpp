@@ -41,9 +41,8 @@
 //#include "design_pattern/bridge/test_bridge.hpp"
 //#include "design_pattern/observer/test_observer.hpp"
 //#include "design_pattern/singleton/test_singleton.hpp"
-#include "design_pattern/factory_method/Test_factory_method.h"
-
 #include "concurrent/Test_concurrent_queue.h"
+#include "design_pattern/factory_method/test_factory_method.h"
 
 #include "variant/variant.h"
 using namespace std;

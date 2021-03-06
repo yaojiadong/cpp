@@ -17,12 +17,12 @@
 #ifndef CLIENT_CPP_
 #define CLIENT_CPP_
 
-#include <iostream>
-#include "Remote.hpp"
-#include "Radio.hpp"
-#include "Tv.hpp"
+#include "test_bridge.h"
 
-#include "test_bridge.hpp"
+#include <iostream>
+#include "Radio.h"
+#include "Remote.h"
+#include "Tv.h"
 
 void test_bridge(){
 

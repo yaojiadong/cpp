@@ -14,36 +14,32 @@
  *                  grant of a patent or the registration of a utility model
  *                  or design.
  */
-#ifndef TV_HPP_
-#define TV_HPP_
+#ifndef SQUAREPEGADAPTER_HPP_
+#define SQUAREPEGADAPTER_HPP_
 
-#include "IDevice.hpp"
+/*
+ * Is the square peg fit to the round hole?
+ * Since the round hole only accepts round peg,
+ * the square peg adapter facilitates the check if a square peg fits the round hole.
+ * */
 
-class Tv : public IDevice{
+#include <cmath>
+
+#include "Round_peg.h"
+#include "Square_peg.h"
+
+
+class Square_peg_adapter : public Round_peg{
 
 public:
-	Tv(bool enabled=false, int channel=1, int volume=50):enabled_{enabled},channel_{channel},volume_{volume}{}
+	Square_peg_adapter(Square_peg sp):square_peg_{sp}{}
 
-	bool isEnabled() override{return enabled_;}
-
-	void enable() override{enabled_ = true;}
-
-	void disable() override{enabled_ = false;}
-
-	int getVolume() override{return volume_;}
-
-	void setVolume(int volume) override{volume_ = volume;}
-
-	int getChannel() override{return channel_;}
-
-	void setChannel(int channel) override{channel_ = channel;}
+	int radius() const override  {return static_cast<int>(square_peg_.width()*std::sqrt(2)*2);}
 
 private:
-	bool enabled_;
-	int channel_;
-	int volume_;
+	Square_peg square_peg_;
 };
 
 
 
-#endif /* TV_HPP_ */
+#endif /* SQUAREPEGADAPTER_HPP_ */

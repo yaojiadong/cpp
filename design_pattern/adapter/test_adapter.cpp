@@ -19,16 +19,17 @@
 #include "test_adapter.hpp"
 
 #include <iostream>
-#include "SquarePeg.hpp"
-#include "SquarePegAdapter.hpp"
-#include "RoundHole.hpp"
+
+#include "Round_hole.h"
+#include "Square_peg.h"
+#include "Square_peg_adapter.h"
 
 
 void test_adapter(){
 
-	RoundHole round_hole{3};
-	SquarePeg square_peg{5};
-	SquarePegAdapter square_peg_adapter{square_peg};
+	Round_hole round_hole{3};
+	Square_peg square_peg{5};
+	Square_peg_adapter square_peg_adapter{square_peg};
 
 	std::cout<<round_hole.fit(square_peg_adapter);
 }

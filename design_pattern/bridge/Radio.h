@@ -14,19 +14,38 @@
  *                  grant of a patent or the registration of a utility model
  *                  or design.
  */
-#ifndef SQUAREPEG_HPP_
-#define SQUAREPEG_HPP_
+#ifndef RADIO_HPP_
+#define RADIO_HPP_
 
-class SquarePeg{
+#include "IDevice.h"
+
+class Radio : public IDevice{
+
 public:
-	SquarePeg(int width=0):width_{width}{}
+	Radio(bool enabled=false, int channel=1, int volume=50)
+	:enabled_{enabled},channel_{channel},volume_{volume}
+	{}
 
-	int width() const {return width_;}
+	bool isEnabled() override{return enabled_;}
+
+	void enable() override{enabled_ = true;}
+
+	void disable() override{enabled_ = false;}
+
+	int getVolume() override{return volume_;}
+
+	void setVolume(int volume) override{volume_ = volume;}
+
+	int getChannel() override{return channel_;}
+
+	void setChannel(int channel) override{channel_ = channel;}
 
 private:
-	int width_;
+	bool enabled_;
+	int channel_;
+	int volume_;
 };
 
 
 
-#endif /* SQUAREPEG_HPP_ */
+#endif /* RADIO_HPP_ */

@@ -7,7 +7,8 @@
 
 
 #include "test_observer.hpp"
-#include "Client.hpp"
+
+#include "Client.h"
 
 int test_observer()
 {
