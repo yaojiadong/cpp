@@ -16,7 +16,7 @@
 
 template<class T>
 class Deque{
-	using iterator = Iterator_doubly_linked_list<T>::Iterator;
+	using iterator = typename Iterator_doubly_linked_list<T>::Iterator;
 public:
 	Deque(int n=0):sz{n},lst{}{}
 	~Deque(){}
