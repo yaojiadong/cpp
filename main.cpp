@@ -42,6 +42,7 @@
 #include "design_pattern/factory_method/test_factory_method.h"
 #include "design_pattern/abstract_factory/test_abstract_factory.h"
 #include "design_pattern/builder/test_builder.h"
+#include "design_pattern/prototype/test_prototype.h"
 
 #include "concurrent/Test_concurrent_queue.h"
 
@@ -83,7 +84,8 @@ int main(){
 //	test_tagged_union();
 
 //	test_abstract_factory();
-	test_builder();
+//	test_builder();
+	test_prototype();
 
 	return 0;
 }
