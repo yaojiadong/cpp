@@ -39,8 +39,11 @@
 #include "design_pattern/bridge/test_bridge.h"
 #include "design_pattern/observer/test_observer.h"
 #include "design_pattern/singleton/test_singleton.h"
-#include "concurrent/Test_concurrent_queue.h"
 #include "design_pattern/factory_method/test_factory_method.h"
+#include  "design_pattern/abstract_factory/test_abstract_factory.h"
+
+#include "concurrent/Test_concurrent_queue.h"
+
 #include "typeid/typeid.h"
 
 #include "variant/variant.h"
@@ -76,7 +79,9 @@ int main(){
 //	test_factory_method();
 
 //	test_concurrent_queue();
-	test_tagged_union();
+//	test_tagged_union();
+
+	test_abstract_factory();
 
 	return 0;
 }
