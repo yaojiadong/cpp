@@ -9,6 +9,7 @@
  * Polymorphic clones, covariance
  * https://www.fluentcpp.com/2017/09/08/make-polymorphic-copy-modern-cpp/
  * https://stackoverflow.com/questions/196733/how-can-i-use-covariant-return-types-with-smart-pointers
+ * https://stackoverflow.com/questions/6924754/return-type-covariance-with-smart-pointers
  *
  * C++ allows overriding a virtual method with one that has a different return type, provided this return
  * type is a pointer (resp. reference) to a class convertible to the one pointed to (resp. referenced by)
@@ -22,7 +23,9 @@
  *
  * Solution:
  * 1. keep using row pointer
- * 2. Use row pointer in Base, and smart pointers elsewhere. Define an extra -impl member function to facilitate the return type as smart pointer
+ * 2. Use row pointer in Base, and smart pointers elsewhere.
+ * 	  Define an extra -impl member function to facilitate the return type as smart pointer. See solution2.cpp
+ * 3. Use covariance on raw pointers, and then wrap them. See soluction3.cpp
  *
  * */
 
