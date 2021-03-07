@@ -44,6 +44,7 @@
 #include "typeid/typeid.h"
 
 #include "variant/variant.h"
+#include "union/test_tagged_union.h"
 using namespace std;
 
 #if __cplusplus
@@ -74,7 +75,8 @@ int main(){
 //	test_variant();
 //	test_factory_method();
 
-	test_concurrent_queue();
+//	test_concurrent_queue();
+	test_tagged_union();
 
 	return 0;
 }
