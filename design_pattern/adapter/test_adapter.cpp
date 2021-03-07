@@ -16,7 +16,7 @@
  */
 
 
-#include "test_adapter.hpp"
+#include "test_adapter.h"
 
 #include <iostream>
 
