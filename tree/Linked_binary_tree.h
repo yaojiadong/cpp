@@ -15,7 +15,7 @@
 
 
 template<class E>
-class LinkedBinaryTree{
+class Linked_binary_tree{
 
 protected:
 	struct Node{
@@ -47,14 +47,14 @@ public:
 
 		bool isExternal() const {return node->left==nullptr && node->right==nullptr;}
 
-		friend class LinkedBinaryTree;
+		friend class Linked_binary_tree;
 	};
 
 	using PositionList = std::list<Position>;
 
 public:
 
-	LinkedBinaryTree():_root{nullptr},n{0}{}
+	Linked_binary_tree():_root{nullptr},n{0}{}
 
 	int size() const{return n;}
 

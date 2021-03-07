@@ -21,7 +21,7 @@
 #ifndef DATA_STRUCTURE_TREE_HPP_
 #define DATA_STRUCTURE_TREE_HPP_
 
-#include"Position.hpp"
+#include"Position.h"
 
 template<class E>
 class Tree{

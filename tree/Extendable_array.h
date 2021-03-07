@@ -12,10 +12,10 @@
 #include <algorithm>
 
 template<class T>
-class ExtendableArray{
+class Extendable_array{
 public:
-	ExtendableArray(){}
-	virtual ~ExtendableArray(){if(arr != nullptr) delete [] arr;}
+	Extendable_array(){}
+	virtual ~Extendable_array(){if(arr != nullptr) delete [] arr;}
 
 	virtual int size() const{return n;}
 

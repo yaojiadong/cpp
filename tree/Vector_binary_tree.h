@@ -10,10 +10,10 @@
 
 
 #include <list>
-#include "Vector.hpp"
+#include "Vector.h"
 
 template<class E>
-class VBinaryTree{
+class Vector_binary_tree{
 protected:
 	struct Node{
 		E elem;
@@ -58,13 +58,13 @@ public:
 //			return ((2*index+1>=vec.getCapacity()) || (vec[index*2+1]==e && vec[index*2+2]==e));
 		}
 
-		friend class VBinaryTree;
+		friend class Vector_binary_tree;
 	};
 
 	using PositionList = std::list<Position>;
 
 public:
-	VBinaryTree():vec{}{}
+	Vector_binary_tree():vec{}{}
 
 	int size() const{return vec.size();}
 

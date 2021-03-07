@@ -34,7 +34,7 @@
 #include "data_structure/Deque.h"
 #include "data_structure/Iterator_doubly_linked_list.h"
 #include "data_structure/Stack.h"
-#include "tree/test_tree.hpp"
+#include "tree/test_tree.h"
 #include "design_pattern/adapter/test_adapter.h"
 #include "design_pattern/bridge/test_bridge.h"
 #include "design_pattern/observer/test_observer.h"

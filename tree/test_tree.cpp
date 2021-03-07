@@ -7,21 +7,21 @@
 
 
 #include <iostream>
-#include "test_tree.hpp"
+#include "test_tree.h"
 
 using namespace std;
 
 void test_tree(){
-	VBinaryTree<int> vbt;
+	Vector_binary_tree<int> vbt;
 //	VBT<int> vbt;
 	vbt.addRoot(5);
-	VBinaryTree<int>::Position p0{0};
+	Vector_binary_tree<int>::Position p0{0};
 	vbt.expandExternal(p0, 1, 10);
 //	vbt.expandExternal(vbt.root(), 1, 10);
-	VBinaryTree<int>::Position p{2};
+	Vector_binary_tree<int>::Position p{2};
 	vbt.expandExternal(p,3,6);
 
-	VBinaryTree<int>::Position p5{5};
+	Vector_binary_tree<int>::Position p5{5};
 	vbt.expandExternal(p5,23,26);
 
 //	cout<<p0.isExternal();

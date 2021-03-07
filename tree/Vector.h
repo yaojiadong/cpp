@@ -12,14 +12,14 @@
  * The Vector class is used for Vector based binary tree.
  * */
 
-#include "ExtendableArray.hpp"
+#include "Extendable_array.h"
 
 template<class T>
-class Vector:public ExtendableArray<T>{
-	using ExtendableArray<T>::capacity;
-	using ExtendableArray<T>::n;
-	using ExtendableArray<T>::arr;
-	using ExtendableArray<T>::reserve;
+class Vector:public Extendable_array<T>{
+	using Extendable_array<T>::capacity;
+	using Extendable_array<T>::n;
+	using Extendable_array<T>::arr;
+	using Extendable_array<T>::reserve;
 
 public:
 

@@ -27,9 +27,9 @@ public:
 
 	PositionList<E> children() const{}
 
-	bool isRoot() const {}
-
-	bool isExternal() const {}
+//	bool isRoot() const {}
+//
+//	bool isExternal() const {}
 };
 
 
