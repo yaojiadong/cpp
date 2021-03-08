@@ -14,6 +14,7 @@ public:
 	virtual ~IGraphic(){}
 	virtual void move(int x, int y) = 0;
 	virtual void draw() const = 0;
+	virtual bool is_compound() const = 0;
 };
 
 

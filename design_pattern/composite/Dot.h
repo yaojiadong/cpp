@@ -16,7 +16,7 @@ public:
 	Dot(int xx=0, int yy=0):x{xx},y{yy}{}
 	virtual void move(int xx, int yy) override {x += xx; y += yy;}
 	virtual void draw() const override {std::cout << "Draw dot\n";}
-
+	virtual bool is_compound() const override {return false;}
 private:
 	int x, y;
 };

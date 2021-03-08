@@ -27,6 +27,7 @@ public:
 		}
 	}
 
+	virtual bool is_compound() const override {return true;}
 	void add(std::shared_ptr<IGraphic> graphic) {graphics.push_back(graphic);}
 	void remove(std::shared_ptr<IGraphic> graphic) {graphics.erase(std::find(graphics.begin(), graphics.end(), graphic));}
 
