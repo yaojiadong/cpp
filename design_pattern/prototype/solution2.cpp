@@ -6,8 +6,13 @@
  */
 
 /*
+ *
+ * https://stackoverflow.com/questions/6924754/return-type-covariance-with-smart-pointers
+ *
+ *
  * Solution:
- * 2. Use row pointer in Base, and smart pointers elsewhere. Define an extra -impl member function to facilitate the return type as smart pointer
+ * 2. Use row pointer in Base, and smart pointers elsewhere. Define an extra -impl member function to facilitate
+ * the use of covariance on raw pointers, and then wrap them.
  *
  * Name hiding (i.e. when declaring a name in a derived class, this name hides all the symbols with the same name in the base class),
  * we hide (not override) the clone() member function to return a smart pointer of the exact type we wanted.
@@ -20,11 +25,14 @@ class Base{
 public:
 	virtual ~Base(){}
 	std::unique_ptr<Base> clone() const{
-		return std::make_unique<Base>(this->clone_impl());
+		Base* d = this->clone_impl();
+		std::unique_ptr<Base> p = std::make_unique<Base>(*d);
+		delete d;
+		return p;
 	}
 
 private:
-	virtual Base* clone_impl() const = 0;
+	virtual Base* clone_impl() const {return new Base(*this); }
 };
 
 class Derived : public Base

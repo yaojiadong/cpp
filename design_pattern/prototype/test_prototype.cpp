@@ -23,8 +23,8 @@
  *
  * Solution:
  * 1. keep using row pointer
- * 2. Use row pointer in Base, and smart pointers elsewhere.
- * 	  Define an extra -impl member function to facilitate the return type as smart pointer. See solution2.cpp
+ * 2. Use row pointer in Base, and smart pointers elsewhere. Define an extra -impl member function to facilitate
+ * the use of covariance on raw pointers, and then wrap them. See solution2.cpp
  * 3. Use covariance on raw pointers, and then wrap them. See soluction3.cpp
  *
  * */
