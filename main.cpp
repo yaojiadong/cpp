@@ -43,6 +43,7 @@
 #include "design_pattern/abstract_factory/test_abstract_factory.h"
 #include "design_pattern/builder/test_builder.h"
 #include "design_pattern/prototype/test_prototype.h"
+#include "design_pattern/composite/test_composite.h"
 
 #include "concurrent/Test_concurrent_queue.h"
 
@@ -85,7 +86,8 @@ int main(){
 
 //	test_abstract_factory();
 //	test_builder();
-	test_prototype();
+//	test_prototype();
+	test_composite();
 
 	return 0;
 }
