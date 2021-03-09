@@ -72,13 +72,13 @@ void f2(int&&t) {  //<-----this is a universal reference
 	f1(std::forward<int>(t));  	// T is deduced as int for f(T&&), type int is not rvalue, nor lvalue, t is rvalue
 	f1(std::move(t));			// T is deduced as int for f(T&&), type int is not rvalue, nor lvalue, t is rvalue
 	f1(t);						// T is deduced as int for f(T&),  type int is not rvalue, nor lvalue, t is lvalue (Names of rvalue reference variables are lvalues)
-								// If f1(T&) not exist, then f1(t) will call f1(T&&), T is deduced as int&, type int& is lvalue, t is lvalue
+								// If f1(T&) not exist, then f1(t) will call f1(T&&), T is deduced as int&, type int& is lvalue reference, t is lvalue
 
 
 	f0(std::forward<int>(t));  	// T is deduced as int for f(T&&), type int is not rvalue, nor lvalue, t is rvalue
 	f0(std::move(t));			// T is deduced as int for f(T&&), type int is not rvalue, nor lvalue, t is rvalue
 	f0(t);						// T is deduced as int for f(T&),  type int is not rvalue, nor lvalue, t is lvalue
-								// If f0(T&) not exist, then f0(t) will call f0(T&&), T is deduced as int&, type int& is lvalue, t is lvalue
+								// If f0(T&) not exist, then f0(t) will call f0(T&&), T is deduced as int&, type int& is lvalue reference, t is lvalue
 }
 
 
