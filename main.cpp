@@ -27,6 +27,7 @@
 #include "structure_binding/structure_binding.h"
 #include "node_handle/node_handle.h"
 #include "pow/pow.h"
+#include "operator_overloading/My_integer.h"
 
 #include "data_structure/Doubly_linked_list.h"
 #include "data_structure/Array_stack.h"
@@ -71,6 +72,7 @@ int main(){
 //	test_structure_binding();
 //	test_node_handle();
 //	test_pow();
+	test_operator_overloading();
 
 //	test_tree();
 
@@ -89,7 +91,7 @@ int main(){
 //	test_builder();
 //	test_prototype();
 //	test_composite();
-	test_decorator();
+//	test_decorator();
 
 	return 0;
 }
