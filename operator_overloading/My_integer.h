@@ -27,6 +27,12 @@ public:
 		return temp;
 	}
 
+	My_integer& operator+=(const My_integer& aint){
+		this->m_Num += aint.m_Num;
+		cout<<"operator+= single argument called\n";
+		return *this;
+	}
+
 	 /*
 	  * In class operator only has one argument.
 	  * The left operand is the object of this class, the right operand is the argument.
@@ -34,15 +40,8 @@ public:
 	  * Error would be: ambiguous overload for 'operator+' (operand types are 'My_integer' and 'My_integer')
 	  * */
 	My_integer& operator+(const My_integer& aint){
-		this->m_Num += aint.m_Num;
 		cout<<"operator+ single argument called\n";
-		return *this;
-	}
-
-	My_integer& operator+=(const My_integer& aint){
-		this->m_Num += aint.m_Num;
-		cout<<"operator+= single argument called\n";
-		return *this;
+		return (*this) += aint;
 	}
 
 	/*
