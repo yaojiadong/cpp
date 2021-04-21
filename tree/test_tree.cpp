@@ -12,15 +12,14 @@
 using namespace std;
 
 void test_tree(){
+
+	/*************************** test vector binary tree***************************/
 	Vector_binary_tree<int> vbt;
-//	VBT<int> vbt;
 	vbt.addRoot(5);
 	Vector_binary_tree<int>::Position p0{0};
 	vbt.expandExternal(p0, 1, 10);
-//	vbt.expandExternal(vbt.root(), 1, 10);
-	Vector_binary_tree<int>::Position p{2};
-	vbt.expandExternal(p,3,6);
-
+	Vector_binary_tree<int>::Position p2{2};
+	vbt.expandExternal(p2,3,6);
 	Vector_binary_tree<int>::Position p5{5};
 	vbt.expandExternal(p5,23,26);
 
@@ -28,23 +27,46 @@ void test_tree(){
 	cout<<"size is "<<vbt.size()<<endl;
 	cout<<"capacity is "<<vbt.capacity()<<endl;
 
-//	Vector<int> vec = vbt.getVector();
-//	cout<<"capacity is "<<vec.getCapacity()<<endl;
-//	for(int i=0; i<vec.size(); ++i){
-//		cout<<*(vec.at(i))<<" ";
-//	}
-//	cout<<'\n';
-
-//	for(auto p: vbt.positions() ){
-////		if(p.isExternal()){}
-//		try{
-//		cout<<"At position "<<(*p)<< ", the value is"<<vec.at(*p)<<endl;
-//		}catch(std::runtime_error& e){
-//			cout<<e.what()<<endl;
-//		}
-////		cout<<vec.at(*p)<<' ';
-//	}
 	vbt.printVector();
 	vbt.printTree();
+
+
+	/*************************** test linked binary tree ***************************/
+	Linked_binary_tree<int> lbt;
+	lbt.addRoot(5);
+	lbt.expandExternal(lbt.root(), 1, 10);
+	lbt.expandExternal(lbt.root().left(),3,6);
+	lbt.expandExternal(lbt.root().right(),23,26);
+
+	cout<<"size is "<<lbt.size()<<endl;
+
+	Linked_binary_tree<int>::PositionList pl = lbt.positions();
+	for(auto p : pl){
+		std::cout << *p << std::endl;
+	}
+
+
+	/*************************** test linked binary tree2 ***************************/
+	tree2::Linked_binary_tree<int> lbt2;
+	lbt2.addRoot(5);
+	lbt2.expandExternal(lbt2.root(), 1, 10);
+	lbt2.expandExternal(lbt2.root().left(),3,6);
+	lbt2.expandExternal(lbt2.root().right(),23,26);
+
+	cout<<"size is "<<lbt2.size()<<endl;
+
+	tree2::Linked_binary_tree<int>::PositionList pl2 = lbt2.positions();
+	for(auto p : pl2){
+		std::cout << *p << std::endl;
+	}
+
+
+
+
+
+//	lbt.printVector();
+//	lbt.printTree();
+
+
 
 }

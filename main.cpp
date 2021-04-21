@@ -71,9 +71,9 @@ int main(){
 //	test_structure_binding();
 //	test_node_handle();
 //	test_pow();
-	test_operator_overloading();
+//	test_operator_overloading();
 
-//	test_tree();
+	test_tree();
 
 //	test_adapter();
 //	test_bridge();
