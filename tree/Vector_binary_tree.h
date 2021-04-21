@@ -80,8 +80,6 @@ public:
 		vec.insert(0, Node(elem,0));
 	}
 
-	Vector<E> getVector(){return vec;}
-
 	void expandExternal(const Position& p){
 		int i = p.index;
 		vec.insert(i*2+1, Node{});
@@ -114,7 +112,7 @@ public:
 	void printTree(){
 		for(auto p: positions() ){
 			try{
-				std::cout<<"At position "<<(*p)<< ", the value is"<<vec.at(*p).elem<<std::endl;
+				std::cout<<"At position "<<(*p)<< ", the value is "<<vec.at(*p).elem<<std::endl;
 			}catch(std::runtime_error& e){
 				std::cout<<e.what()<<std::endl;
 			}
