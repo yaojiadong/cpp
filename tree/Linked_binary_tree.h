@@ -23,7 +23,7 @@ protected:
 		Node* par;
 		Node* left;
 		Node* right;
-		Node():elem{},par{nullptr},left{nullptr},right{nullptr}{}
+		Node(const E & e = E{}):elem{e},par{nullptr},left{nullptr},right{nullptr}{}
 	};
 
 public:

@@ -28,6 +28,10 @@
 #include "node_handle/node_handle.h"
 #include "pow/pow.h"
 #include "operator_overloading/My_integer.h"
+#include "concurrent/Test_concurrent_queue.h"
+#include "typeid/typeid.h"
+#include "variant/variant.h"
+#include "union/test_tagged_union.h"
 
 #include "data_structure/Doubly_linked_list.h"
 #include "data_structure/Array_stack.h"
@@ -47,12 +51,7 @@
 #include "design_pattern/composite/test_composite.h"
 #include "design_pattern/decorator/test_decorator.h"
 
-#include "concurrent/Test_concurrent_queue.h"
 
-#include "typeid/typeid.h"
-
-#include "variant/variant.h"
-#include "union/test_tagged_union.h"
 using namespace std;
 
 #if __cplusplus
