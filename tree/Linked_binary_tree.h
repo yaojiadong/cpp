@@ -64,7 +64,7 @@ public:
 
 	PositionList positions() const{ PositionList pl; preorder(_root, pl); return pl;}
 
-	void addRoot(){_root = new Node; n=1;}
+	void addRoot(const E & e){_root = new Node(e); n=1;}
 
 	void expandExternal(const Position& p){
 		Node* node = p.node;
