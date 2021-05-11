@@ -8,7 +8,7 @@
 #ifndef TREE_TEST_TREE_HPP_
 #define TREE_TEST_TREE_HPP_
 
-#include "Linked_binary_tree.h"
+#include "Linked_binary_tree.hpp"
 #include "Linked_binary_tree2.h"
 #include "Vector_binary_tree.h"
 #include "Vector.h"

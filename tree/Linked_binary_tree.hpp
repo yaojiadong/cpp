@@ -1,3 +1,10 @@
+/*
+ * BinaryTree.hpp
+ *
+ *  Created on: Feb 22, 2021
+ *      Author: jiado
+ */
+
 
 #ifndef LINKED_BINARY_TREE_HPP_
 #define LINKED_BINARY_TREE_HPP_
@@ -73,7 +80,7 @@ public:
 
 	PositionList positions() const{ PositionList pl; preorder(_root, pl); return pl;}
 	// set nullptr as parent of root,  _root->par = nullptr is done by ctor of Node()
-	void addRoot(){_root = new Node(); n=1;}
+	void addRoot(const E & e = E()){_root = new Node(); n=1;}
 
 	void expandExternal(const Position& p){
 		Node* node = p.node;

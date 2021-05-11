@@ -11,7 +11,7 @@
  */
 
 
-#include "Linked_binary_tree.hpp"
+#include "../tree/Linked_binary_tree.hpp"
 #include <string>
 #include <iostream>
 
