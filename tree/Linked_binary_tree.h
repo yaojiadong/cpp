@@ -5,13 +5,13 @@
  *      Author: jiado
  */
 
-#ifndef DATA_STRUCTURE_BINARYTREE_HPP_
-#define DATA_STRUCTURE_BINARYTREE_HPP_
+
+#ifndef LINKED_BINARY_TREE_HPP_
+#define LINKED_BINARY_TREE_HPP_
 
 
-#include<exception>
+#include<stdexcept>
 #include<list>
-
 
 
 template<class E>
@@ -24,6 +24,13 @@ protected:
 		Node* left;
 		Node* right;
 		Node(const E & e = E{}):elem{e},par{nullptr},left{nullptr},right{nullptr}{}
+		bool operator==(const Node & node){
+			return this->elem == node.elem;
+		}
+
+		bool operator!=(const Node & node){
+			return this->elem != node.elem;
+		}
 	};
 
 public:
@@ -33,8 +40,15 @@ public:
 	public:
 		Position(Node* _node=nullptr):node{_node}{}
 
-		E& operator*(){return node->elem;}
+		E& operator*() const {return node->elem;}
 
+		E* operator->() const {return &(node->elem);}
+
+		bool operator==(const Position& p) const {return p.node == node;}
+
+		bool operator!=(const Position& p) const {return p.node != node;}
+
+		// what if the parent() is called on root? -> set nullptr as parent of root. see addRoot()
 		Position parent() const{return Position(node->par);}
 
 		Position left() const{return Position(node->left);}
@@ -46,6 +60,8 @@ public:
 		bool isRoot() const {return node->par == nullptr;}
 
 		bool isExternal() const {return node->left==nullptr && node->right==nullptr;}
+
+		bool isInternal() const {return !isExternal();}
 
 		friend class Linked_binary_tree;
 	};
@@ -63,8 +79,8 @@ public:
 	Position root() const{return Position{_root};}
 
 	PositionList positions() const{ PositionList pl; preorder(_root, pl); return pl;}
-
-	void addRoot(const E & e){_root = new Node(e); n=1;}
+	// set nullptr as parent of root,  _root->par = nullptr is done by ctor of Node()
+	void addRoot(){_root = new Node(); n=1;}
 
 	void expandExternal(const Position& p){
 		Node* node = p.node;
@@ -131,4 +147,4 @@ private:
 
 
 
-#endif /* DATA_STRUCTURE_BINARYTREE_HPP_ */
+#endif /* LINKED_BINARY_TREE_HPP_ */
