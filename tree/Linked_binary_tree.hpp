@@ -80,7 +80,7 @@ public:
 
 	PositionList positions() const{ PositionList pl; preorder(_root, pl); return pl;}
 	// set nullptr as parent of root,  _root->par = nullptr is done by ctor of Node()
-	void addRoot(const E & e = E()){_root = new Node(); n=1;}
+	void addRoot(const E & e = E()){_root = new Node(e); n=1;}
 
 	void expandExternal(const Position& p){
 		Node* node = p.node;
