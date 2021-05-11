@@ -39,7 +39,7 @@
 #include "data_structure/Deque.h"
 #include "data_structure/Iterator_doubly_linked_list.h"
 #include "data_structure/Stack.h"
-#include "tree/test_tree.h"
+
 #include "design_pattern/adapter/test_adapter.h"
 #include "design_pattern/bridge/test_bridge.h"
 #include "design_pattern/observer/test_observer.h"
@@ -51,6 +51,8 @@
 #include "design_pattern/composite/test_composite.h"
 #include "design_pattern/decorator/test_decorator.h"
 
+#include "tree/test_tree.h"
+#include "search_tree/test_search_tree.hpp"
 
 using namespace std;
 
@@ -73,7 +75,8 @@ int main(){
 //	test_pow();
 //	test_operator_overloading();
 
-	test_tree();
+//	test_tree();
+	test_search_tree();
 
 //	test_adapter();
 //	test_bridge();
