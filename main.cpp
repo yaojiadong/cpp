@@ -51,7 +51,7 @@
 #include "design_pattern/composite/test_composite.h"
 #include "design_pattern/decorator/test_decorator.h"
 
-#include "tree/test_tree.h"
+#include "tree/test_tree.hpp"
 #include "search_tree/test_search_tree.hpp"
 
 using namespace std;
@@ -75,8 +75,13 @@ int main(){
 //	test_pow();
 //	test_operator_overloading();
 
-//	test_tree();
-	test_search_tree();
+	// test tree
+	test_linked_binary_tree_int();
+	test_linked_binary_tree_entry();
+	test_vector_binary_tree_int();
+	test_linked_binary_tree_v2_int();
+
+//	test_search_tree();
 
 //	test_adapter();
 //	test_bridge();

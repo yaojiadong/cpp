@@ -5,6 +5,9 @@
  *      Author: jiado
  */
 
+/**
+ * This class is well-tested and mainly used by other modules.
+ * */
 
 #ifndef LINKED_BINARY_TREE_HPP_
 #define LINKED_BINARY_TREE_HPP_
@@ -23,7 +26,8 @@ protected:
 		Node* par;
 		Node* left;
 		Node* right;
-		Node(const E & e = E{}):elem{e},par{nullptr},left{nullptr},right{nullptr}{}
+//		Node(const E & e = E{}):elem{e},par{nullptr},left{nullptr},right{nullptr}{}
+		Node():elem{E()},par{nullptr},left{nullptr},right{nullptr}{}
 		bool operator==(const Node & node){
 			return this->elem == node.elem;
 		}
@@ -80,7 +84,7 @@ public:
 
 	PositionList positions() const{ PositionList pl; preorder(_root, pl); return pl;}
 	// set nullptr as parent of root,  _root->par = nullptr is done by ctor of Node()
-	void addRoot(const E & e = E()){_root = new Node(e); n=1;}
+	void addRoot(){_root = new Node(); n=1;}
 
 	void expandExternal(const Position& p){
 		Node* node = p.node;
@@ -91,14 +95,14 @@ public:
 		n += 2;
 	}
 
-	void expandExternal(const Position& p, E left_elem, E right_elem){
-		Node* node = p.node;
-		node->left = new Node{left_elem};
-		node->left->par = node;
-		node->right = new Node{right_elem};
-		node->right->par = node;
-		n += 2;
-	}
+//	void expandExternal(const Position& p, E left_elem, E right_elem){
+//		Node* node = p.node;
+//		node->left = new Node{left_elem};
+//		node->left->par = node;
+//		node->right = new Node{right_elem};
+//		node->right->par = node;
+//		n += 2;
+//	}
 
 	Position removeAboveExternal(const Position& p){
 

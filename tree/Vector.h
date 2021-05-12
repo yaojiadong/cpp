@@ -12,7 +12,7 @@
  * The Vector class is used for Vector based binary tree.
  * */
 
-#include "Extendable_array.h"
+#include "Extendable_array.hpp"
 
 template<class T>
 class Vector:public Extendable_array<T>{
@@ -33,7 +33,7 @@ public:
 	 * Note the usage of capacity and the size n.
 	 * */
 
-	T& at(int i) override {if(i>=capacity || i<0) throw std::runtime_error("Index out of bound"); return arr[i];}
+	T& at(int i) const override {if(i>=capacity || i<0) throw std::runtime_error("Index out of bound"); return arr[i];}
 
 	void insert(int i, const T & elem) override{
 		if(i >= capacity) reserve(2*capacity+1);
