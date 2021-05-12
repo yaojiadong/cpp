@@ -12,6 +12,7 @@
 
 
 #include "../tree/Linked_binary_tree.hpp"
+#include "../tree/Entry.hpp"
 #include <string>
 #include <iostream>
 
@@ -25,30 +26,6 @@ private:
 	std::string _message;
 };
 
-
-template <typename K, typename V>
-class Entry{
-public:
-	using Key = K;
-	using Value = V;
-public:
-	Entry(const K & k= K(), const V& v = V()):
-		_key{k}, _value{v}{}
-	const K & key() const {return _key;}
-	const V & value() const {return _value;}
-	void set_key(const K & k) {_key = k;}
-	void set_value(const V & v) {_value = v;}
-
-	bool operator==(const Entry& e) const {return this->_key == e._key && this->_value == e._value;}
-
-	bool operator!=(const Entry& e) const {return (this->_key != e._key || this->_value != e._value);}
-
-	void print_entry(){std::cout << "key: " << _key << ", value: " << _value << std::endl;}
-
-private:
-	K _key;
-	V _value;
-};
 
 
 template <typename E>
@@ -102,7 +79,7 @@ protected: // local utilities
 	TPos finder(const K& k, const TPos& v){
 		if(v.isExternal()) return v; // key not found
 		if(k < v->key()) return finder(k, v.left());   //  (*v).key() -> v->key()
-		else if( k > v->key()) return finder(k, v.right());
+		else if(k > v->key()) return finder(k, v.right());
 		else return v;
 	}
 
@@ -163,16 +140,23 @@ public:
 
 		Iterator& operator++(){ // inorder successor
 			TPos w = _v.right();
-			if(!w.isExternal()){
-				// return the leftmost node
+			if(!w.isExternal()){ // find the leftmost node
 				do{w = w.left();}
 				while(!w.isExternal());
+			}else{// go up until the subtree is no more right subtree
+				while(w.parent().right() == w) {w = w.parent();}
 			}
-			else{
-				// go up until the subtree is no more right subtree
-				while(w.parent().right() == w){
-					w = w.parent();
-				}
+			_v = w.parent();
+			return *this;
+		}
+
+		Iterator& operator--(){
+			TPos w = _v.left();
+			if(w.isInternal()){ // find the rightmost
+				do{w = w.right();}
+				while(w.isInternal());
+			}else{ // go up until the subtree is no more left subtree
+				while(w.parent().left() == w) {w = w.parent();}
 			}
 			_v = w.parent();
 			return *this;
