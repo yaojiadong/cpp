@@ -58,7 +58,8 @@ public:
 	}
 
 	void erase(const Iterator& it){
-		eraser(it._v);
+		if(it != end())
+			eraser(it._v);
 	}
 
 	Iterator begin() const {
@@ -115,7 +116,9 @@ protected: // local utilities
 		return _tree.removeAboveExternal(w);
 	}
 
-	TPos restructure(const TPos& v); //throw BoundaryViolation
+	TPos restructure(const TPos& x){ //throw BoundaryViolation
+		return _tree.restructure(x);
+	}
 
 private:
 	Tree _tree;
@@ -132,7 +135,7 @@ public:
 
 		E& operator*() {return *_v;} 			  // read / write
 
-		TPos& operator->() {return _v;}  // NOTE: it returns a pointer to Entry, no access to the Position object
+		E* operator->() {return _v.operator ->();}  // NOTE: it returns a pointer to Entry, no access to the Position object
 
 		bool operator==(const Iterator& p) const { return _v == p._v;}  // compare the TPos, which is the Position class in the Linked_binary_tree.
 
