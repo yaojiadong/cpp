@@ -53,6 +53,7 @@
 
 #include "tree/test_tree.hpp"
 #include "search_tree/test_search_tree.hpp"
+#include "search_tree/test_AVL_tree.hpp"
 
 using namespace std;
 
@@ -81,7 +82,8 @@ int main(){
 //	test_vector_binary_tree_int();
 //	test_linked_binary_tree_v2_int();
 
-	test_search_tree();
+//	test_search_tree();
+//	test_AVL_tree();
 
 //	test_adapter();
 //	test_bridge();

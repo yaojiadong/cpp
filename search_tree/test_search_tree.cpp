@@ -5,13 +5,13 @@
 #include "test_search_tree.hpp"
 
 
-void print_tree(const Search_tree<Entry<int, std::string>>& bst){
+static void print_tree(const Search_tree<Entry<int, std::string>>& bst){
 	 for(auto it = bst.begin(); it != bst.end(); ++it){
 		 (*it).print_entry();
 	 }
 }
 
-void message(const std::string& msg){
+static void message(const std::string& msg){
 	std::cout << msg << std::endl;
 }
 
@@ -48,10 +48,16 @@ void test_search_tree(){
 	 print_tree(bst);
 	 message("Size: " + std::to_string(bst.size()));
 
-	 message("\nErase by Iterator and print the tree...");
+	 message("\nErase by Iterator found and print the tree...");
 	 bst.erase(bst.find(1));
 	 print_tree(bst);
 	 message("Size: " + std::to_string(bst.size()));
+
+	 message("\nErase by Iterator not found and print the tree...");
+	 bst.erase(bst.find(10));
+	 print_tree(bst);
+	 message("Size: " + std::to_string(bst.size()));
+
 
 	 message("\nErase by invalid key and print the error message...");
 	 try{
