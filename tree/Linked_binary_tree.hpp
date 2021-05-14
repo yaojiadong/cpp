@@ -29,11 +29,12 @@ protected:
 //		Node(const E & e = E{}):elem{e},par{nullptr},left{nullptr},right{nullptr}{}
 		Node():elem{E()},par{nullptr},left{nullptr},right{nullptr}{}
 		bool operator==(const Node & node){
-			return this->elem == node.elem;
+			return this->elem == node.elem && this->left == node.left && this->right == node.right && this->par == node.par;
+
 		}
 
 		bool operator!=(const Node & node){
-			return this->elem != node.elem;
+			return this->elem != node.elem || this->left != node.left || this->right != node.right || this->par != node.par;
 		}
 	};
 
@@ -136,6 +137,71 @@ public:
 		return Position(sib);
 	}
 
+	Position restructure(const Position& x){ //throw BoundaryViolation
+		Position y = x.parent();
+		Position z = y.parent();
+		Position a, b, c, T0, T1, T2, T3;
+
+		if(z.left() == y){
+			c = z;
+			if(y.left() == x){
+				a = x;
+				b = y;
+				T1 = a.right();
+			}
+			if(y.right() == x){
+				a = y;
+				b = x;
+				T1 = b.left();
+			}
+			T0 = a.left();
+			T2 = b.right();
+			T3 = c.right();
+		}
+		if(z.right() == y){
+			a = z;
+			if(y.left() == x){
+				b = x;
+				c = y;
+				T2 = b.right();
+			}
+			if(y.right() == x){
+				b = y;
+				c = x;
+				T2 = c.left();
+			}
+
+			T0 = a.left();
+			T1 = b.left();
+			T3 = c.right();
+		}
+
+		if(z.parent().left() == z){
+			z.parent().node->left = b.node;
+			b.node->par = z.parent().node;
+		}
+		if(z.parent().right() == z){
+			z.parent().node->right = b.node;
+			b.node->par = z.parent().node;
+		}
+
+		b.node->left = a.node;
+		b.node->right = c.node;
+		a.node->par = b.node;
+		c.node->par = b.node;
+
+		a.node->left = T0.node;
+		a.node->right = T1.node;
+		T0.node->par = a.node;
+		T1.node->par = a.node;
+
+		c.node->left = T2.node;
+		c.node->right = T3.node;
+		T2.node->par = c.node;
+		T3.node->par = c.node;
+
+		return b;
+	}
 
 protected:
 	void preorder(Node* node, PositionList& pl) const{
