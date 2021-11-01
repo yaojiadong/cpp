@@ -55,6 +55,7 @@
 #include "search_tree/test_search_tree.hpp"
 #include "search_tree/test_AVL_tree.hpp"
 
+#include "smart_pointer/Shared_ptr.h"
 using namespace std;
 
 #if __cplusplus
@@ -101,6 +102,8 @@ int main(){
 //	test_prototype();
 //	test_composite();
 //	test_decorator();
+
+	test_shared_ptr();
 
 	return 0;
 }
