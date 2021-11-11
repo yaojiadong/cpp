@@ -1,37 +1,30 @@
 #pragma once
 
-
 #include <string>
 class Singleton {
 
 public:
+  // delete copy ctor
+  Singleton(Singleton &) = delete;
 
-	//delete copy ctor
-	Singleton(Singleton&) = delete;
+  // delete copy assignment operator
+  Singleton &operator=(const Singleton &) = delete;
 
-	//delete copy assignment operator
-	Singleton& operator= (const Singleton&) = delete;
+  static Singleton &getInstance() {
+    static Singleton singleton;
+    return singleton;
+  }
 
+  void setString(const std::string s) { str = s; }
 
-	static Singleton& getInstance() {
-		static Singleton singleton;
-		return singleton;
-	}
-
-	void setString(const std::string s) {
-		str = s;
-	}
-
-	std::string getString() {
-		return str;
-	}
+  std::string getString() { return str; }
 
 private:
-	//private ctor
-	Singleton(const std::string s = "Hello\n") : str{s} {}
+  // private ctor
+  Singleton(const std::string &s = "Hello\n") : str{s} {
+    std::cout << "Constructor\n";
+  }
 
 private:
-//	static Singleton singleton;
-	std::string str;
-
+  std::string str;
 };
