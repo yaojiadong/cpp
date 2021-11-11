@@ -4,6 +4,8 @@
 class Singleton {
 
 public:
+  ~Singleton() { std::cout << "Destructor\n"; }
+
   // delete copy ctor
   Singleton(Singleton &) = delete;
 
