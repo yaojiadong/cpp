@@ -1,4 +1,5 @@
 #include "test_ctor_v3.h"
+#include "Ctor_v3.h"
 
 void test_ctor_v3() {
   Ctor_v3 a, b; // constructor
