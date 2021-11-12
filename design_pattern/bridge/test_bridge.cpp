@@ -1,41 +1,30 @@
-/**
- * \brief           Template header file
- * \compiler        Cosmic S12X
- * \controller      Freescale Tomar
- *
- * \file
- * \copyright       COPYRIGHT (C) Brose Fahrzeugteile GmbH & Co. KG, Bamberg
- * \copyright       ALL RIGHTS RESERVED
- * \copyright       The copying, use, distribution or disclosure of the
- *                  confidential and proprietary information contained in this
- *                  document(s) is strictly prohibited without prior written
- *                  consent. Any breach shall subject the infringing party to
- *                  remedies. The owner reserves all rights in the event of the
- *                  grant of a patent or the registration of a utility model
- *                  or design.
- */
 #ifndef CLIENT_CPP_
 #define CLIENT_CPP_
 
 #include "test_bridge.h"
 
-#include <iostream>
 #include "Radio.h"
 #include "Remote.h"
 #include "Tv.h"
+#include <iostream>
 
-void test_bridge(){
+void test_bridge() {
 
-	Radio radio;
-	Remote remote{radio};
+  Radio *radio = new Radio{};
+  Tv *tv = new Tv{};
+  Remote remote_radio{radio};
+  Remote remote_tv{tv};
 
-	std::cout<< "Radio volume is "<<radio.getVolume() <<std::endl;
-	remote.volumeDown();
-	std::cout<< "Radio volume is "<<radio.getVolume() <<std::endl;
+  std::cout << "Radio volume is " << radio->getVolume() << std::endl;
+  remote_radio.volumeDown();
+  std::cout << "Radio volume is " << radio->getVolume() << std::endl;
 
+  std::cout << "Radio volume is " << tv->getVolume() << std::endl;
+  remote_tv.volumeUp();
+  std::cout << "Radio volume is " << tv->getVolume() << std::endl;
+
+  delete radio;
+  delete tv;
 }
-
-
-
 
 #endif /* CLIENT_CPP_ */

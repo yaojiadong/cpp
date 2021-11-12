@@ -12,12 +12,11 @@
 #include "IProduct_b.h"
 #include <memory>
 
-class IFactory{
+class IFactory {
 public:
-	virtual ~IFactory(){}
-	virtual std::unique_ptr<IProduct_a> create_product_a() const = 0;
-	virtual std::unique_ptr<IProduct_b>  create_product_b() const = 0;
+  virtual ~IFactory() {}
+  virtual std::unique_ptr<IProduct_a> create_product_a() const = 0;
+  virtual std::unique_ptr<IProduct_b> create_product_b() const = 0;
 };
-
 
 #endif /* DESIGN_PATTERN_ABSTRACT_FACTORY_IFACTORY_H_ */

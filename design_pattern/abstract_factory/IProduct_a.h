@@ -10,11 +10,10 @@
 
 #include <iostream>
 
-class IProduct_a{
+class IProduct_a {
 public:
-	virtual ~IProduct_a(){}
-	virtual std::string use_product_a() const = 0;
+  virtual ~IProduct_a() {}
+  virtual std::string use_product_a() const = 0;
 };
-
 
 #endif /* DESIGN_PATTERN_ABSTRACT_FACTORY_IPRODUCT_A_H_ */

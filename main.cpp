@@ -85,10 +85,15 @@ int main() {
   //	test_search_tree();
   //	test_AVL_tree();
 
-  //	test_adapter();
-  //	test_bridge();
+  // test_adapter();
+  // test_bridge();
   //	test_observer();
   //	test_singleton();
+  //	test_abstract_factory();
+  //	test_builder();
+  //	test_prototype();
+  test_composite();
+  //	test_decorator();
 
   //	test_variant();
   //	test_factory_method();
@@ -96,14 +101,8 @@ int main() {
   //	test_concurrent_queue();
   //	test_tagged_union();
 
-  //	test_abstract_factory();
-  //	test_builder();
-  //	test_prototype();
-  //	test_composite();
-  //	test_decorator();
-
   // test_shared_ptr();
-  test_ctor_copy_swap();
+  // test_ctor_copy_swap();
 
   return 0;
 }

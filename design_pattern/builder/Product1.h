@@ -11,22 +11,21 @@
 #include <iostream>
 #include <vector>
 
-class Product1{
+class Product1 {
 public:
-	std::vector<std::string> parts;
+  std::vector<std::string> parts;
 
-	void ListParts()const{
-		std::cout << "Product1 has parts: ";
-		for (size_t i=0;i<parts.size();i++){
-			if(parts[i]== parts.back()){
-				std::cout << parts[i];
-			}else{
-				std::cout << parts[i] << ", ";
-			}
-		}
-		std::cout << "\n\n";
-	}
+  void ListParts() const {
+    std::cout << "Product1 has parts: ";
+    for (size_t i = 0; i < parts.size(); i++) {
+      if (parts[i] == parts.back()) {
+        std::cout << parts[i];
+      } else {
+        std::cout << parts[i] << ", ";
+      }
+    }
+    std::cout << "\n\n";
+  }
 };
-
 
 #endif /* DESIGN_PATTERN_BUILDER_PRODUCT1_H_ */

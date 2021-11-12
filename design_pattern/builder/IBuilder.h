@@ -8,15 +8,13 @@
 #ifndef DESIGN_PATTERN_BUILDER_IBUILDER_H_
 #define DESIGN_PATTERN_BUILDER_IBUILDER_H_
 
-
-class IBuilder{
+class IBuilder {
 public:
-	virtual ~IBuilder(){}
+  virtual ~IBuilder() {}
 
-	virtual void product_part_a() const = 0;
-	virtual void product_part_b() const = 0;
-	virtual void product_part_c() const = 0;
+  virtual void product_part_a() const = 0;
+  virtual void product_part_b() const = 0;
+  virtual void product_part_c() const = 0;
 };
-
 
 #endif /* DESIGN_PATTERN_BUILDER_IBUILDER_H_ */

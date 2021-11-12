@@ -8,14 +8,12 @@
 #ifndef DESIGN_PATTERN_COMPOSITE_IGRAPHIC_H_
 #define DESIGN_PATTERN_COMPOSITE_IGRAPHIC_H_
 
-
-class IGraphic{
+class IGraphic {
 public:
-	virtual ~IGraphic(){}
-	virtual void move(int x, int y) = 0;
-	virtual void draw() const = 0;
-	virtual bool is_compound() const = 0;
+  virtual ~IGraphic() {}
+  virtual void move(int x, int y) = 0;
+  virtual void draw() const = 0;
+  virtual bool is_compound() const = 0;
 };
-
 
 #endif /* DESIGN_PATTERN_COMPOSITE_IGRAPHIC_H_ */

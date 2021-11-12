@@ -10,19 +10,17 @@
 
 #include "Director.h"
 
-class Client{
+class Client {
 public:
-	Client(Director& d):director{d}{}
-	void ask_for_simple_product() {director.build_simple_product();}
-	void ask_for_full_product() {director.build_full_product();}
+  Client(Director &d) : director{d} {}
+  void ask_for_simple_product() { director.build_simple_product(); }
+  void ask_for_full_product() { director.build_full_product(); }
 
-//	void ask_for_simple_product() {director.build_simple_product();}
-//	void ask_for_full_product1() {director.build_full_product();}
+  //	void ask_for_simple_product() {director.build_simple_product();}
+  //	void ask_for_full_product1() {director.build_full_product();}
 
 private:
-	Director& director;
-
+  Director &director;
 };
-
 
 #endif /* DESIGN_PATTERN_BUILDER_CLIENT_H_ */
