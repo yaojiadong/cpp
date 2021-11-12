@@ -11,31 +11,33 @@
 #include <iostream>
 #include <string>
 
-class Base {
+class Ctor {
 public:
-  Base(int a_value = 0) : a{a_value} { std::cout << "Constructor\n"; }
+  Ctor(int a_value = 0) : size{a_value} { std::cout << "Constructor\n"; }
 
-  Base(const Base &base) : a{base.a} { std::cout << "Copy constructor\n"; }
+  Ctor(const Ctor &other) : size{other.size} {
+    std::cout << "Copy constructor\n";
+  }
 
-  Base &operator=(Base &base) {
+  Ctor &operator=(const Ctor &other) {
     std::cout << "Copy assignment";
-    this->a = base.a;
+    this->size = other.size;
     return *this;
   }
 
-  Base(Base &&base) : a{std::move(base.a)} {
+  Ctor(Ctor &&other) noexcept : size{std::move(other.size)} {
     std::cout << "Move constructor\n";
   }
 
-  Base &operator=(Base &&base) {
+  Ctor &operator=(Ctor &&other) noexcept {
     std::cout << "Move assignment\n";
-    this->a = std::move(base.a);
+    this->size = std::move(other.size);
   }
 
-  ~Base() { std::cout << "Destructor\n"; }
+  ~Ctor() { std::cout << "Destructor\n"; }
 
 private:
-  int a;
+  int size;
 };
 
 #endif /* DEFAULT_CTOR_HPP_ */
