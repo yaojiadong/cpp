@@ -55,6 +55,8 @@
 #include "tree/test_tree.hpp"
 
 #include "smart_pointer/Shared_ptr.h"
+
+#include "ctor/test_ctor_copy_swap.h"
 using namespace std;
 
 //#if __cplusplus
@@ -100,7 +102,8 @@ int main() {
   //	test_composite();
   //	test_decorator();
 
-  test_shared_ptr();
+  // test_shared_ptr();
+  test_ctor_copy_swap();
 
   return 0;
 }
