@@ -40,7 +40,6 @@ public:
 
   Ctor_v2(Ctor_v2 &&ctor) noexcept
       : _length{std::move(ctor._length)}, _data{std::move(ctor._data)} {
-
     std::cout << "Move constructor\n";
     if (ctor._data == nullptr) {
       std::cout << "After Move constructor, data is nullptr\n";
@@ -53,10 +52,12 @@ public:
 
   Ctor_v2 &operator=(Ctor_v2 &&ctor) noexcept {
     std::cout << "Move assignment\n";
-    this->_length = std::move(ctor._length);
-    this->_data = std::move(ctor._data);
-    ctor._data = nullptr;
-    ctor._length = 0;
+    if (this != &ctor) {
+      this->_length = std::move(ctor._length);
+      this->_data = std::move(ctor._data);
+      ctor._data = nullptr;
+      ctor._length = 0;
+    }
     return *this;
   }
 

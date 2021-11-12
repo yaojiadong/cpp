@@ -42,8 +42,10 @@ public:
 
   Ctor_v3 &operator=(Ctor_v3 &&ctor) noexcept {
     std::cout << "Move assignment\n";
-    this->_data.clear();
-    this->_data = std::move(ctor._data);
+    if (this != &ctor) {
+      this->_data.clear();
+      this->_data = std::move(ctor._data);
+    }
     return *this;
   }
 

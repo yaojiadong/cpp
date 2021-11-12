@@ -21,17 +21,24 @@ public:
 
   Ctor &operator=(const Ctor &other) {
     std::cout << "Copy assignment";
-    this->size = other.size;
+    if (this != &other) {
+      this->size = other.size;
+    }
     return *this;
   }
 
   Ctor(Ctor &&other) noexcept : size{std::move(other.size)} {
     std::cout << "Move constructor\n";
+    other.size = 0;
   }
 
   Ctor &operator=(Ctor &&other) noexcept {
     std::cout << "Move assignment\n";
-    this->size = std::move(other.size);
+    if (this != &other) {
+      this->size = std::move(other.size);
+      other.size = 0;
+    }
+    return *this;
   }
 
   ~Ctor() { std::cout << "Destructor\n"; }
