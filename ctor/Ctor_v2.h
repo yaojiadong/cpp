@@ -47,6 +47,7 @@ public:
     } else {
       std::cout << "After Move constructor, data is NOT nullptr\n";
       ctor._data = nullptr;
+      ctor._length = 0;
     }
   }
 
@@ -55,6 +56,7 @@ public:
     this->_length = std::move(ctor._length);
     this->_data = std::move(ctor._data);
     ctor._data = nullptr;
+    ctor._length = 0;
     return *this;
   }
 
@@ -62,7 +64,7 @@ public:
     std::cout << "Destructor\n";
     if (_data != nullptr) {
       std::cout << "Deleting resouce\n";
-      delete _data;
+      delete[] _data;
     }
   }
 
