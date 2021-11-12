@@ -22,7 +22,7 @@ public:
     std::cout << "Copy constructor\n";
   }
 
-  Ctor_v3 &operator=(Ctor_v3 &ctor) {
+  Ctor_v3 &operator=(const Ctor_v3 &ctor) {
     std::cout << "Copy assignment\n";
     if (this != &ctor) {
       _data.clear();
@@ -31,7 +31,7 @@ public:
     return *this;
   }
 
-  Ctor_v3(Ctor_v3 &&ctor) : _data{std::move(ctor._data)} {
+  Ctor_v3(Ctor_v3 &&ctor) noexcept : _data{std::move(ctor._data)} {
     std::cout << "Move constructor\n";
     if (ctor._data.empty() == true) {
       std::cout << "After Move constructor, data is empty\n";
@@ -40,7 +40,7 @@ public:
     }
   }
 
-  Ctor_v3 &operator=(Ctor_v3 &&ctor) {
+  Ctor_v3 &operator=(Ctor_v3 &&ctor) noexcept {
     std::cout << "Move assignment\n";
     this->_data.clear();
     this->_data = std::move(ctor._data);

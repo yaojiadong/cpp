@@ -27,7 +27,7 @@ public:
     std::copy(ctor._data, ctor._data + _length, _data);
   }
 
-  Ctor_v2 &operator=(Ctor_v2 &ctor) {
+  Ctor_v2 &operator=(const Ctor_v2 &ctor) {
     std::cout << "Copy assignment\n";
     if (this != &ctor) {
       delete[] _data;
@@ -38,7 +38,7 @@ public:
     return *this;
   }
 
-  Ctor_v2(Ctor_v2 &&ctor)
+  Ctor_v2(Ctor_v2 &&ctor) noexcept
       : _length{std::move(ctor._length)}, _data{std::move(ctor._data)} {
 
     std::cout << "Move constructor\n";
@@ -51,7 +51,7 @@ public:
     }
   }
 
-  Ctor_v2 &operator=(Ctor_v2 &&ctor) {
+  Ctor_v2 &operator=(Ctor_v2 &&ctor) noexcept {
     std::cout << "Move assignment\n";
     this->_length = std::move(ctor._length);
     this->_data = std::move(ctor._data);
