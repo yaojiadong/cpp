@@ -166,7 +166,8 @@ void test_par_pack_auto() {
   // testing: the type is a class, not plain in, char...
 
   // non-typed parameter, p is a lambda to be executed, not plain int, char...
-  // single_par_auto<p>(); // compile error
+  // single_par_auto<p>(); // compile error in VS, but compiled with -std=c++2a
+  // on Ubuntu
 
   // non-typed parameter, with primitive type
   single_par_auto_primitive<3>();
@@ -178,12 +179,18 @@ void test_par_pack_auto() {
 
   // testing non-typed parameter pack expansion
   doPrint1<1, 2, 'a'>(); // string literals cannot be used in this context
-  // doPrint2<p>();    // same compile error as  single_par_auto<p>();
-  // doPrint3<p, q>(); // same compile error as  single_par_auto<p>();
+
+  // same compile error as single_par_auto<p>(); but compiled with -std=c++2a on
+  // Ubuntu
+  // doPrint2<p>();
+
+  // same compile error as single_par_auto<p>(); but compiled with -std=c++2a on
+  // Ubuntu
+  // doPrint3<p, q>();
 
   // testing typed parameter pack expansion without recursion.
   doPrint(cout, 1, "start print1", "2+2", '\n');
-  //	doPrint(cout,p);
+  // doPrint(cout,p);
 
   // testing the typed parameter pack expansion with recursion
   print1 pp, pp1;
