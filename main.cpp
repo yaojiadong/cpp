@@ -52,7 +52,7 @@
 
 #include "search_tree/test_AVL_tree.hpp"
 #include "search_tree/test_search_tree.hpp"
-#include "tree/test_tree.hpp"
+#include "tree/test_tree.h"
 
 #include "smart_pointer/Shared_ptr.h"
 
@@ -76,11 +76,9 @@ int main() {
   //	test_pow();
   //	test_operator_overloading();
 
-  /* test tree*/
-  //	test_linked_binary_tree_int();
-  //	test_linked_binary_tree_entry();
-  //	test_vector_binary_tree_int();
-  //	test_linked_binary_tree_v2_int();
+  // test_linked_binary_tree_int();
+  // test_linked_binary_tree_entry();
+  // test_vector_binary_tree_int();
 
   //	test_search_tree();
   //	test_AVL_tree();
@@ -92,7 +90,7 @@ int main() {
   //	test_abstract_factory();
   //	test_builder();
   //	test_prototype();
-  test_composite();
+  // test_composite();
   //	test_decorator();
 
   //	test_variant();
