@@ -49,6 +49,59 @@ void test_linked_binary_tree_int() {
   }
 }
 
+void test_linked_binary_tree_string() {
+  /*************************** test vector binary tree with string as element
+   * ***************************/
+  message("\ntest vector binary tree with string as element...");
+  Linked_binary_tree<std::string> lbt;
+  using Pos = Linked_binary_tree<std::string>::Position;
+  lbt.add_root("-");
+  lbt.expand_external(lbt.root(), "/", "+");
+  Pos depth_1_left = lbt.root().left();
+  Pos depth_1_right = lbt.root().right();
+  lbt.expand_external(depth_1_left, "*", "+");
+  lbt.expand_external(depth_1_right, "*", "6");
+
+  Pos depth_1_left_depth_2_left = depth_1_left.left();
+  Pos depth_1_left_depth_2_right = depth_1_left.right();
+  Pos depth_1_right_depth_2_left = depth_1_right.left();
+  lbt.expand_external(depth_1_left_depth_2_left, "+", "3");
+  lbt.expand_external(depth_1_left_depth_2_right, "-", "2");
+  lbt.expand_external(depth_1_right_depth_2_left, "3", "-");
+
+  Pos depth_1_left_depth_2_left_depth_3_left = depth_1_left_depth_2_left.left();
+  Pos depth_1_left_depth_2_right_depth_3_left =
+      depth_1_left_depth_2_right.left();
+  Pos depth_1_right_depth_2_left_depth_3_right =
+      depth_1_right_depth_2_left.right();
+  lbt.expand_external(depth_1_left_depth_2_left_depth_3_left, "3", "1");
+  lbt.expand_external(depth_1_left_depth_2_right_depth_3_left, "9", "5");
+  lbt.expand_external(depth_1_right_depth_2_left_depth_3_right, "7", "4");
+
+  cout << "size is " << lbt.size() << endl;
+
+  Linked_binary_tree<std::string>::PositionList pl = lbt.positions();
+  for (auto p : pl) {
+    std::cout << *p << std::endl;
+  }
+
+  lbt.print_expression(lbt.root());
+  std::cout << "\n";
+
+  // optional: draw tree
+  using less = Linked_binary_tree<std::string>::less;
+  std::multimap<std::pair<int, int>, Pos, less> m;
+  lbt.inorder_draw_tree(lbt.root(), m);
+  cout << "Map size is " << m.size() << endl;
+
+  for (const auto &e : m) {
+    cout << e.first.first << " " << e.first.second << " " << *(e.second)
+         << endl;
+  }
+
+  // lbt.draw(m); // not working yet
+}
+
 void test_linked_binary_tree_entry() {
 
   /*************************** test linked binary tree with Entry as element
@@ -115,7 +168,8 @@ void test_vector_binary_tree_int() {
 
   Vector_binary_tree<int>::PositionList pl = vbt.positions();
   for (auto p : pl) {
-    //		std::cout << vbt.element(p) << "\tExternal: " << p.isExternal()
+    //		std::cout << vbt.element(p) << "\tExternal: " <<
+    // p.isExternal()
     //<< std::endl;
     std::cout << *p << "\tExternal: " << p.is_external() << std::endl;
   }

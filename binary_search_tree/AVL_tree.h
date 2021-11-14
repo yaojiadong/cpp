@@ -2,8 +2,8 @@
 #ifndef AVL_TREE_HPP_
 #define AVL_TREE_HPP_
 
-#include "AVL_entry.hpp"
-#include "Binary_search_tree.hpp"
+#include "AVL_entry.h"
+#include "Binary_search_tree.h"
 
 /* E is the entry type. The standard Entry will be used. */
 template <typename E> class AVL_tree : public Search_tree<AVL_entry<E>> {

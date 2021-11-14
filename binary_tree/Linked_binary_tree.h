@@ -12,8 +12,10 @@
 #ifndef LINKED_BINARY_TREE_H_
 #define LINKED_BINARY_TREE_H_
 
+#include <complex>
 #include <iostream>
 #include <list>
+#include <map>
 #include <stdexcept>
 
 template <class E> class Linked_binary_tree {
@@ -101,9 +103,97 @@ public:
   PositionList positions() const {
     PositionList pl;
     // preorder(_root, pl);
-    // inorder(_root, pl);
-    postorder(_root, pl);
+    inorder(_root, pl);
+    // postorder(_root, pl);
     return pl;
+  }
+
+  void print_expression(const Position &p) {
+    if (p.is_external()) {
+      std::cout << p.node->elem;
+    } else {
+      std::cout << "(";
+      print_expression(p.node->left);
+      std::cout << p.node->elem;
+      print_expression(p.node->right);
+      std::cout << ")";
+    }
+  }
+
+  // template <typename T> struct less {
+  //  bool operator()(const T &x, const T &y) const {
+  //    return x.second < y.second;
+  //  }
+  //};
+
+  struct less {
+    bool operator()(const std::pair<int, int> &x,
+                    const std::pair<int, int> &y) const {
+      return x.second < y.second;
+    }
+  };
+
+  void
+  inorder_draw_tree(const Position &p,
+                    std::multimap<std::pair<int, int>, Position, less> &m) {
+    if (p.node->left != nullptr)
+      inorder_draw_tree(p.node->left, m);
+
+    // visiting the node.
+    // (x, y) as coordinates of the Position.
+    static int x = 0;
+    int y = depth(p);
+    std::cout << "Coordinate: (" << x << ", " << y << "), Node value: " << *p
+              << std::endl;
+    m.insert({std::make_pair(x, y), p});
+    x++;
+
+    if (p.node->right != nullptr)
+      inorder_draw_tree(p.node->right, m);
+  }
+
+  /* TODO: Not a complete binary tree, difficult to draw.*/
+  // void draw(std::multimap<std::pair<int, int>, Position, less> &m) const {
+  //  int count = 0;
+  //  for (const auto &e : m) {
+  //    int level = e.first.second;
+  //    int tab_count = 9 - level * 2;
+
+  //    if (count == 0) { // print starting tab.
+  //      for (int i = 0; i < tab_count; ++i) {
+  //        std::cout << "    ";
+  //      }
+  //    }
+
+  //    std::cout << *(e.second);
+  //    for (int i = 0; i < tab_count; ++i) {
+  //      std::cout << "  ";
+  //    } // printing tab between two nodes
+  //    count++;
+  //    if (pow(2, e.first.second) > count) {
+  //      std::cout << "\n";
+  //      count = 0;
+  //    }
+  //  }
+  //}
+
+  int depth(const Position &p) {
+    if (p.is_root()) {
+      return 0;
+    } else {
+      return 1 + depth(p.parent());
+    }
+  }
+
+  int height(const Position &p) const {
+    if (p.is_external()) {
+      return 0;
+    } else {
+      int h = 0;
+      h = std::max(h, height(p.left()));
+      h = std::max(h, height(p.right()));
+      return 1 + h;
+    }
   }
 
   void add_root(const E &e = E{}) {
@@ -254,6 +344,16 @@ protected:
     pl.push_back(Position(node));
     if (node->right != nullptr)
       inorder(node->right, pl);
+  }
+
+  void euler_order(Node *node, PositionList &pl) const {
+    pl.push_back(Position(node));
+    if (node->left != nullptr)
+      euler_order(node->left, pl);
+    pl.push_back(Position(node));
+    if (node->right != nullptr)
+      euler_order(node->right, pl);
+    pl.push_back(Position(node));
   }
 
   void postorder_destructor(Node *node) const {

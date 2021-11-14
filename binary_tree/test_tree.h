@@ -13,6 +13,8 @@
 
 void test_linked_binary_tree_int();
 
+void test_linked_binary_tree_string();
+
 void test_linked_binary_tree_entry();
 
 void test_vector_binary_tree_int();

@@ -50,9 +50,9 @@
 #include "design_pattern/prototype/test_prototype.h"
 #include "design_pattern/singleton/test_singleton.h"
 
-#include "search_tree/test_AVL_tree.hpp"
-#include "search_tree/test_search_tree.hpp"
-#include "tree/test_tree.h"
+#include "binary_search_tree/test_AVL_tree.h"
+#include "binary_search_tree/test_binary_search_tree.h"
+#include "binary_tree/test_tree.h"
 
 #include "smart_pointer/Shared_ptr.h"
 
@@ -76,10 +76,11 @@ int main() {
   //	test_pow();
   //	test_operator_overloading();
 
-  test_linked_binary_tree_int();
-  test_linked_binary_tree_entry();
-  test_vector_binary_tree_int();
-  test_vector_binary_tree_entry();
+  // test_linked_binary_tree_int();
+  // test_linked_binary_tree_entry();
+  test_linked_binary_tree_string();
+  // test_vector_binary_tree_int();
+  // test_vector_binary_tree_entry();
 
   //	test_search_tree();
   //	test_AVL_tree();

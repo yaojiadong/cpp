@@ -12,8 +12,8 @@
  * end.
  */
 
-#include "../tree/Entry.h"
-#include "../tree/Linked_binary_tree.h"
+#include "../binary_tree/Entry.h"
+#include "../binary_tree/Linked_binary_tree.h"
 #include <iostream>
 #include <string>
 

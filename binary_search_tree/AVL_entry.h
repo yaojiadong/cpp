@@ -4,8 +4,8 @@
  * In order to store the height information, we derive a subclass, called
  * AVL_entry, from the standard entry class
  */
-#ifndef AVL_ENTRY_HPP_
-#define AVL_ENTRY_HPP_
+#ifndef AVL_ENTRY_H_
+#define AVL_ENTRY_H_
 
 template <typename E> class AVL_tree;
 
@@ -29,4 +29,4 @@ private:
   int _height;
 };
 
-#endif /* AVL_ENTRY_HPP_ */
+#endif /* AVL_ENTRY_H_ */
