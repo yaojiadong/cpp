@@ -258,7 +258,7 @@ public:
     return Position(sib);
   }
 
-  Position restructure(const Position &x) { // throw BoundaryViolation
+  Position restructure(const Position &x) const { // throw BoundaryViolation
     Position y = x.parent();
     Position z = y.parent();
     Position a, b, c, T0, T1, T2, T3;
