@@ -39,7 +39,7 @@ void test_linked_binary_tree_int() {
   lbt.expand_external(lbt.root(), 5, 6);
   lbt.expand_external(lbt.root().left());
   lbt.expand_external(lbt.root().right());
-  lbt.set_node(lbt.root().left().left(), 2);
+  lbt.set_node(lbt.root().left().left(), 3);
 
   cout << "size is " << lbt.size() << endl;
 

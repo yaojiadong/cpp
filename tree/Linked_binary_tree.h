@@ -100,7 +100,9 @@ public:
 
   PositionList positions() const {
     PositionList pl;
-    preorder(_root, pl);
+    // preorder(_root, pl);
+    // inorder(_root, pl);
+    postorder(_root, pl);
     return pl;
   }
 
@@ -244,6 +246,14 @@ protected:
     if (node->right != nullptr)
       postorder(node->right, pl);
     pl.push_back(Position(node));
+  }
+
+  void inorder(Node *node, PositionList &pl) const {
+    if (node->left != nullptr)
+      inorder(node->left, pl);
+    pl.push_back(Position(node));
+    if (node->right != nullptr)
+      inorder(node->right, pl);
   }
 
   void postorder_destructor(Node *node) const {

@@ -54,7 +54,7 @@ public:
     bool is_root() const { return index == 0; }
 
     bool is_external() const {
-      return (index * 2 + 1) >= vbt->vec.getCapacity() ||
+      return (index * 2 + 1) >= vbt->vec.capacity() ||
              (vbt->vec.at(index * 2 + 1) == nullptr &&
               vbt->vec.at(index * 2 + 2) == nullptr);
     }
@@ -77,7 +77,7 @@ public:
 
   int size() const { return vec.size(); }
 
-  int capacity() const { return vec.getCapacity(); }
+  int capacity() const { return vec.capacity(); }
 
   bool empty() const { return vec.size() == 0; }
 
@@ -107,10 +107,10 @@ public:
 protected:
   void preorder(int index, PositionList &pl) const {
     pl.push_back(Position{this, index});
-    if (index * 2 + 1 < vec.getCapacity() && vec.at(index + 2 + 1) != nullptr) {
+    if (index * 2 + 1 < vec.capacity() && vec.at(index * 2 + 1) != nullptr) {
       preorder(index * 2 + 1, pl);
     }
-    if (index * 2 + 2 < vec.getCapacity() && vec.at(index * 2 + 2) != nullptr) {
+    if (index * 2 + 2 < vec.capacity() && vec.at(index * 2 + 2) != nullptr) {
       preorder(index * 2 + 2, pl);
     }
   }

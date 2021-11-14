@@ -1,12 +1,12 @@
 /*
- * ExtendableArray.hpp
+ * Extendable_array.h
  *
  *  Created on: Feb 23, 2021
  *      Author: jiado
  */
 
-#ifndef TREE_EXTENDABLEARRAY_HPP_
-#define TREE_EXTENDABLEARRAY_HPP_
+#ifndef EXTENDABLE_ARRAY_H_
+#define EXTENDABLE_ARRAY_H_
 
 #include <algorithm>
 #include <exception>
@@ -21,7 +21,7 @@ public:
 
   virtual int size() const { return n; }
 
-  virtual int getCapacity() const { return capacity; }
+  virtual int capacity() const { return this->_capacity; }
 
   virtual bool empty() const { return n == 0; }
 
@@ -42,9 +42,9 @@ public:
 
   virtual void insert(int i, const T &elem) {
 
-    if (n >= capacity)
-      reserve(std::max(1, 2 * capacity));
-    if (i >= capacity || i < 0)
+    if (n >= _capacity)
+      reserve(std::max(1, 2 * _capacity));
+    if (i >= _capacity || i < 0)
       throw std::runtime_error(
           "Index out of bound"); // Implement Iterator to encapsulate index
 
@@ -56,7 +56,7 @@ public:
   }
 
   virtual void reserve(int N) {
-    if (capacity > N)
+    if (_capacity > N)
       return;
     T *A = new T[N];
     for (int i = 0; i < n; ++i) {
@@ -65,13 +65,13 @@ public:
     if (arr != nullptr)
       delete[] arr;
     arr = A;
-    capacity = N;
+    _capacity = N;
   }
 
 protected:
   T *arr{nullptr};
-  int capacity{0};
+  int _capacity{0};
   int n{0};
 };
 
-#endif /* TREE_EXTENDABLEARRAY_HPP_ */
+#endif /* EXTENDABLE_ARRAY_H_ */

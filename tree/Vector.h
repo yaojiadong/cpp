@@ -15,7 +15,7 @@
 #include "Extendable_array.h"
 
 template <class T> class Vector : public Extendable_array<T> {
-  using Extendable_array<T>::capacity;
+  using Extendable_array<T>::_capacity;
   using Extendable_array<T>::n;
   using Extendable_array<T>::arr;
   using Extendable_array<T>::reserve;
@@ -32,32 +32,32 @@ public:
    * */
 
   T &at(int i) const override {
-    if (i >= capacity || i < 0)
+    if (i >= _capacity || i < 0)
       throw std::runtime_error("Index out of bound");
     return arr[i];
   }
 
   void insert(int i, const T &elem) override {
-    if (i >= capacity)
-      reserve(2 * capacity + 1);
+    if (i >= _capacity)
+      reserve(2 * _capacity + 1);
     arr[i] = elem;
     ++n;
   }
 
   void reserve(int N) override {
-    if (capacity > N)
+    if (_capacity > N)
       return;
     T *A = new T[N];
-    for (int i = 0; i < capacity; ++i) {
+    for (int i = 0; i < _capacity; ++i) {
       A[i] = arr[i];
     }
-    for (int i = capacity; i < N; ++i) {
+    for (int i = _capacity; i < N; ++i) {
       A[i] = nullptr;
     }
     if (arr != nullptr)
       delete[] arr;
     arr = A;
-    capacity = N;
+    _capacity = N;
   }
 };
 

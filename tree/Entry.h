@@ -1,5 +1,5 @@
-#ifndef ENTRY_HPP_
-#define ENTRY_HPP_
+#ifndef ENTRY_H_
+#define ENTRY_H_
 
 #include <iostream>
 
@@ -32,4 +32,4 @@ private:
   V _value;
 };
 
-#endif /* ENTRY_HPP_ */
+#endif /* ENTRY_H_ */

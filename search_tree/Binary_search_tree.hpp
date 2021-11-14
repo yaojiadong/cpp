@@ -12,7 +12,7 @@
  * end.
  */
 
-#include "../tree/Entry.hpp"
+#include "../tree/Entry.h"
 #include "../tree/Linked_binary_tree.h"
 #include <iostream>
 #include <string>
@@ -120,7 +120,7 @@ protected: // local utilities
                      //		else{ // both subtrees internal
                      //			w= v.right();
                      //			while(w.left().isInternal()) w =
-                     //w.left();
+                     // w.left();
                      //// get
     // leftmost 			v->set_key(w->key());
     // v->set_value(w->value()); w= w.left();
