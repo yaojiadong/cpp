@@ -78,9 +78,9 @@ int main() {
 
   // test_linked_binary_tree_int();
   // test_linked_binary_tree_entry();
-  test_linked_binary_tree_string();
+  // test_linked_binary_tree_string();
   // test_vector_binary_tree_int();
-  // test_vector_binary_tree_entry();
+  test_vector_binary_tree_entry();
 
   //	test_search_tree();
   //	test_AVL_tree();

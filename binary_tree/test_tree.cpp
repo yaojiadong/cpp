@@ -190,28 +190,33 @@ void test_vector_binary_tree_entry() {
 
   Vector_binary_tree<Entry<int, std::string>> vbt;
   // using Pos = Vector_binary_tree<Entry<int, std::string>>::Position;
-
+  //
   // vbt.add_root();
   // vbt.expand_external(vbt.root());
   // vbt.root()->set_key(2); // set element for root
   // vbt.root()->set_value("two");
-
+  //
   // Pos p = vbt.root().left();
   // vbt.expand_external(p);
   // p->set_key(5);
   // p->set_value("five");
-
+  //
   // p = vbt.root().right();
   // vbt.expand_external(p);
   // p->set_key(6); // set element for root
   // p->set_value("six");
 
-  // alternative
-  Entry<int, std::string> e2{2, "two"};
-  Entry<int, std::string> e5{5, "five"};
-  Entry<int, std::string> e6{6, "six"};
-  vbt.add_root(e2);
-  vbt.expand_external(vbt.root(), e5, e6);
+  /* alternative */
+  // Entry<int, std::string> e2{2, "two"};
+  // Entry<int, std::string> e5{5, "five"};
+  // Entry<int, std::string> e6{6, "six"};
+  // vbt.add_root(e2);
+  // vbt.expand_external(vbt.root(), e5, e6);
+
+  vbt.add_root(Entry{2, std::string{"two"}});
+  vbt.expand_external(vbt.root(), Entry{5, std::string{"five"}},
+                      Entry{6, std::string{"six"}});
+
   vbt.expand_external(vbt.root().left());
   vbt.expand_external(vbt.root().right());
 
