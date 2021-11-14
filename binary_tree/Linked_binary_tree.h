@@ -16,6 +16,7 @@
 #include <iostream>
 #include <list>
 #include <map>
+#include <set>
 #include <stdexcept>
 
 template <class E> class Linked_binary_tree {
@@ -129,6 +130,7 @@ public:
   //  }
   //};
 
+  /* pair.first is x coordinate, pair.second is y coordinate.*/
   struct less {
     bool operator()(const std::pair<int, int> &x,
                     const std::pair<int, int> &y) const {
@@ -136,11 +138,11 @@ public:
     }
   };
 
-  void inorder_draw_tree(
+  void compose_data_inorder_for_drawing(
       const Position &p,
       std::multimap<std::pair<int, int>, Position, less> &m) const {
     if (p.node->left != nullptr)
-      inorder_draw_tree(p.node->left, m);
+      compose_data_inorder_for_drawing(p.node->left, m);
 
     // visiting the node.
     // (x, y) as coordinates of the Position.
@@ -152,33 +154,36 @@ public:
     x++;
 
     if (p.node->right != nullptr)
-      inorder_draw_tree(p.node->right, m);
+      compose_data_inorder_for_drawing(p.node->right, m);
   }
 
-  /* TODO: Not a complete binary tree, difficult to draw.*/
-  // void draw(std::multimap<std::pair<int, int>, Position, less> &m) const {
-  //  int count = 0;
-  //  for (const auto &e : m) {
-  //    int level = e.first.second;
-  //    int tab_count = 9 - level * 2;
-  //
-  //    if (count == 0) { // print starting tab.
-  //      for (int i = 0; i < tab_count; ++i) {
-  //        std::cout << "    ";
-  //      }
-  //    }
-  //
-  //    std::cout << *(e.second);
-  //    for (int i = 0; i < tab_count; ++i) {
-  //      std::cout << "  ";
-  //    } // printing tab between two nodes
-  //    count++;
-  //    if (pow(2, e.first.second) > count) {
-  //      std::cout << "\n";
-  //      count = 0;
-  //    }
-  //  }
-  //}
+  void draw(std::multimap<std::pair<int, int>, Position, less> &m) const {
+    int count = 0;
+    int last_x = 0;
+    int total_num_per_row = 0;
+
+    std::multiset<int> mst;
+    for (const auto &e : m) {
+      mst.insert(e.first.second);
+    }
+
+    for (const auto &e : m) {
+      int x = e.first.first;
+      total_num_per_row = mst.count(e.first.second);
+      int print_space = x - last_x;
+      while (print_space--) {
+        std::cout << " ";
+      }
+      std::cout << *(e.second);
+      count++;
+      last_x = x + 1; // add one because of the node it self
+      if (total_num_per_row == count) {
+        std::cout << "\n";
+        count = 0;
+        last_x = 0;
+      }
+    }
+  }
 
   int depth(const Position &p) const {
     if (p.is_root()) {

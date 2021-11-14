@@ -85,21 +85,28 @@ void test_linked_binary_tree_string() {
     std::cout << *p << std::endl;
   }
 
+  message("\nPrinting the expression:");
   lbt.print_expression(lbt.root());
   std::cout << "\n";
 
   // optional: draw tree
   using less = Linked_binary_tree<std::string>::less;
   std::multimap<std::pair<int, int>, Pos, less> m;
-  lbt.inorder_draw_tree(lbt.root(), m);
-  cout << "Map size is " << m.size() << endl;
+  message("\nComposing data as coordinates mapped to node value:");
+  lbt.compose_data_inorder_for_drawing(lbt.root(), m);
 
+  cout << "Map size is " << m.size() << endl;
+  message("\nPrinting multimap impilicitly sorted by y coordinate:");
   for (const auto &e : m) {
-    cout << e.first.first << " " << e.first.second << " " << *(e.second)
-         << endl;
+    // cout << e.first.first << " " << e.first.second << " " << *(e.second)
+    //     << endl;
+
+    std::cout << "Coordinate: (" << e.first.first << ", " << e.first.second
+              << "), Node value: " << *(e.second) << std::endl;
   }
 
-  // lbt.draw(m); // not working yet
+  message("\nDrawing a tree using x,y coordinates:");
+  lbt.draw(m); // a navie tree drawing.
 }
 
 void test_linked_binary_tree_entry() {
