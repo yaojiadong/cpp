@@ -108,7 +108,7 @@ public:
     return pl;
   }
 
-  void print_expression(const Position &p) {
+  void print_expression(const Position &p) const {
     if (p.is_external()) {
       std::cout << p.node->elem;
     } else {
@@ -120,6 +120,9 @@ public:
     }
   }
 
+  /* Supply a type to the struct less. Define as struct to make the operator
+   * public. You can also define it as a class and qualify the operator as
+   * public.*/
   // template <typename T> struct less {
   //  bool operator()(const T &x, const T &y) const {
   //    return x.second < y.second;
@@ -133,9 +136,9 @@ public:
     }
   };
 
-  void
-  inorder_draw_tree(const Position &p,
-                    std::multimap<std::pair<int, int>, Position, less> &m) {
+  void inorder_draw_tree(
+      const Position &p,
+      std::multimap<std::pair<int, int>, Position, less> &m) const {
     if (p.node->left != nullptr)
       inorder_draw_tree(p.node->left, m);
 
@@ -158,13 +161,13 @@ public:
   //  for (const auto &e : m) {
   //    int level = e.first.second;
   //    int tab_count = 9 - level * 2;
-
+  //
   //    if (count == 0) { // print starting tab.
   //      for (int i = 0; i < tab_count; ++i) {
   //        std::cout << "    ";
   //      }
   //    }
-
+  //
   //    std::cout << *(e.second);
   //    for (int i = 0; i < tab_count; ++i) {
   //      std::cout << "  ";
@@ -177,7 +180,7 @@ public:
   //  }
   //}
 
-  int depth(const Position &p) {
+  int depth(const Position &p) const {
     if (p.is_root()) {
       return 0;
     } else {
@@ -346,6 +349,8 @@ protected:
       inorder(node->right, pl);
   }
 
+  /* It is a demo of how using euler_order traversal. The exmaple of using it
+   * can be seen in void print_expression(const Position &p) */
   void euler_order(Node *node, PositionList &pl) const {
     pl.push_back(Position(node));
     if (node->left != nullptr)
