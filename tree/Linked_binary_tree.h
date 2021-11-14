@@ -12,6 +12,7 @@
 #ifndef LINKED_BINARY_TREE_H_
 #define LINKED_BINARY_TREE_H_
 
+#include <iostream>
 #include <list>
 #include <stdexcept>
 
@@ -24,14 +25,12 @@ protected:
     Node *left;
     Node *right;
 
-    // Node():elem{E{}},par{nullptr},left{nullptr},right{nullptr}{}
     Node(const E &e = E())
         : elem{e}, par{nullptr}, left{nullptr}, right{nullptr} {}
 
     bool operator==(const Node &node) {
       return this->elem == node.elem && this->left == node.left &&
              this->right == node.right && this->par == node.par;
-      // return this == &node;
     }
 
     bool operator!=(const Node &node) {
@@ -84,10 +83,13 @@ public:
   Linked_binary_tree() : _root{nullptr}, n{0} {}
 
   ~Linked_binary_tree() {
-    PositionList pl = positions();
-    for (auto p : pl) {
-      delete p.node;
-    }
+    // PositionList pl = positions();
+    // for (auto p : pl) {
+    //  delete p.node;
+    //}
+
+    // alternative
+    postorder_destructor(_root);
   }
 
   int size() const { return n; }
@@ -234,6 +236,22 @@ protected:
       preorder(node->left, pl);
     if (node->right != nullptr)
       preorder(node->right, pl);
+  }
+
+  void postorder(Node *node, PositionList &pl) const {
+    if (node->left != nullptr)
+      postorder(node->left, pl);
+    if (node->right != nullptr)
+      postorder(node->right, pl);
+    pl.push_back(Position(node));
+  }
+
+  void postorder_destructor(Node *node) const {
+    if (node->left != nullptr)
+      postorder_destructor(node->left);
+    if (node->right != nullptr)
+      postorder_destructor(node->right);
+    delete node;
   }
 
 private:

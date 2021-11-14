@@ -6,8 +6,9 @@
  */
 
 #include "test_tree.h"
-#include "Entry.hpp"
+#include "Entry.h"
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -17,9 +18,9 @@ void test_linked_binary_tree_int() {
 
   /*************************** test linked binary tree with int as element
    * ***************************/
-  message("\ntest linked binary tree with int as element...\n");
+  message("\ntest linked binary tree with int as element...");
   Linked_binary_tree<int> lbt;
-  using Pos = Linked_binary_tree<int>::Position;
+  // using Pos = Linked_binary_tree<int>::Position;
 
   // lbt.add_root();
   //*(lbt.root()) = 2; // set element for root
@@ -88,19 +89,26 @@ void test_vector_binary_tree_int() {
   message("\ntest vector binary tree with int as element...");
 
   Vector_binary_tree<int> vbt;
-  using Pos = Vector_binary_tree<int>::Position;
+  // using Pos = Vector_binary_tree<int>::Position;
 
-  vbt.add_root();
-  vbt.expand_external(vbt.root());
-  (vbt.element(vbt.root())) = 2; // set element for root
+  // vbt.add_root();
+  // vbt.expand_external(vbt.root());
+  //*(vbt.root()) = 2; // set element for root
 
-  Pos p = vbt.root().left();
-  vbt.expand_external(p);
-  (vbt.element(p)) = 5; // set element
+  // Pos p = vbt.root().left();
+  // vbt.expand_external(p);
+  //*p = 5; // set element
 
-  p = vbt.root().right();
-  vbt.expand_external(p);
-  (vbt.element(p)) = 6;
+  // p = vbt.root().right();
+  // vbt.expand_external(p);
+  //*p = 6;
+
+  // alternative
+  vbt.add_root(2);
+  vbt.expand_external(vbt.root(), 5, 6);
+  vbt.expand_external(vbt.root().left());
+  vbt.expand_external(vbt.root().right());
+  // vbt.set_node(vbt.root().left().left(), 2);
 
   cout << "size is " << vbt.size() << endl;
   cout << "capacity is " << vbt.capacity() << endl;
@@ -109,7 +117,49 @@ void test_vector_binary_tree_int() {
   for (auto p : pl) {
     //		std::cout << vbt.element(p) << "\tExternal: " << p.isExternal()
     //<< std::endl;
-    std::cout << vbt.element(p) << "\tExternal: " << vbt.is_external(p)
-              << std::endl;
+    std::cout << *p << "\tExternal: " << p.is_external() << std::endl;
+  }
+}
+
+void test_vector_binary_tree_entry() {
+
+  /*************************** test vector binary tree with Entry as element
+   * ***************************/
+  message("\ntest vector binary tree with Entry as element...");
+
+  Vector_binary_tree<Entry<int, std::string>> vbt;
+  // using Pos = Vector_binary_tree<Entry<int, std::string>>::Position;
+
+  // vbt.add_root();
+  // vbt.expand_external(vbt.root());
+  // vbt.root()->set_key(2); // set element for root
+  // vbt.root()->set_value("two");
+
+  // Pos p = vbt.root().left();
+  // vbt.expand_external(p);
+  // p->set_key(5);
+  // p->set_value("five");
+
+  // p = vbt.root().right();
+  // vbt.expand_external(p);
+  // p->set_key(6); // set element for root
+  // p->set_value("six");
+
+  // alternative
+  Entry<int, std::string> e2{2, "two"};
+  Entry<int, std::string> e5{5, "five"};
+  Entry<int, std::string> e6{6, "six"};
+  vbt.add_root(e2);
+  vbt.expand_external(vbt.root(), e5, e6);
+  vbt.expand_external(vbt.root().left());
+  vbt.expand_external(vbt.root().right());
+
+  cout << "size is " << vbt.size() << endl;
+  cout << "capacity is " << vbt.capacity() << endl;
+
+  Vector_binary_tree<Entry<int, std::string>>::PositionList pl =
+      vbt.positions();
+  for (auto p : pl) {
+    std::cout << p->key() << " " << p->value() << std::endl;
   }
 }

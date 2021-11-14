@@ -17,4 +17,6 @@ void test_linked_binary_tree_entry();
 
 void test_vector_binary_tree_int();
 
+void test_vector_binary_tree_entry();
+
 #endif /* TREE_TEST_TREE_H_ */

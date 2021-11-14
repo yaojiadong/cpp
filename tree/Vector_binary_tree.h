@@ -1,15 +1,22 @@
 /*
- * VBinaryTree.hpp
+ * Vector_binary_tree.h
  *
  *  Created on: Feb 22, 2021
  *      Author: jiado
  */
 
-#ifndef TREE_VBINARYTREE_HPP_
-#define TREE_VBINARYTREE_HPP_
+/* For the vector implementation of binary tree,
+ * 1. Not recommend: store Node into the vector. When insert, create a local
+ * instance of Node, and store a copy of it. In this case, we dont have to
+ * bother memory management at the cost of many copys of the object.
+ * 2. Recommend: We could also directly store element into the vector without
+ * the Node wrapper, since Node basically only contains the element, nothing
+ * more.
+ */
+#ifndef VECTOR_BINARY_TREE_H_
+#define VECTOR_BINARY_TREE_H_
 
 #include "Vector.h"
-#include <iostream>
 #include <list>
 
 template <class E> class Vector_binary_tree {
@@ -17,66 +24,42 @@ template <class E> class Vector_binary_tree {
 protected:
   struct Node {
     E elem;
-    bool _is_external;
-
-    Node(bool is_external = true) : elem{E()}, _is_external{is_external} {}
-
-    bool operator==(const Node &node) { return this->elem == node.elem; }
-
-    bool operator!=(const Node &node) { return this->elem != node.elem; }
+    Node(const E &e = E{}) : elem{e} {}
   };
 
 public:
   class Position {
-    //	private:
-    //		Node* _node;
-    //
-    //	public:
-    //		Position(const Node* node):_node{node}{}
-    //
-    //		E& operator*(){return _node->elem;}
-    //
-    //		Position parent() const{return Position((_node->_index-1)/2);}
-    //
-    //		Position left() const{return Position(_node->_index*2+1);}
-    //
-    //		Position right() const{return Position(_node->_index*2+2);}
-    //
-    //		Position sibling() const{return _node->_index%2==0?
-    // Position(_node->_index-1):Position(_node->_index+1);}
-    //
-    //		bool isRoot() const {return _node->_index == 0;}
-    //
-    //		bool isExternal() const {
-    //			return _node->_index == -1;
-    //		}
-
   private:
+    const Vector_binary_tree *vbt;
     int index;
 
   public:
-    Position(int i = 0) : index{i} {}
+    Position(const Vector_binary_tree *_vbt, int i = 0) : vbt{_vbt}, index{i} {}
 
-    int operator*() const { return index; }
+    E &operator*() const { return vbt->vec.at(index)->elem; }
 
-    Position parent() const { return Position((index - 1) / 2); }
+    E *operator->() const { return &(vbt->vec.at(index)->elem); }
 
-    Position left() const { return Position(index * 2 + 1); }
+    Position parent() const { return Position(vbt, (index - 1) / 2); }
 
-    Position right() const { return Position(index * 2 + 2); }
+    Position left() const { return Position(vbt, index * 2 + 1); }
+
+    Position right() const { return Position(vbt, index * 2 + 2); }
 
     Position sibling() const {
-      return index % 2 == 0 ? Position(index - 1) : Position(index + 1);
+      return index % 2 == 0 ? Position(vbt, index - 1)
+                            : Position(vbt, index + 1);
     }
 
     bool is_root() const { return index == 0; }
 
-    // TODO: how to identify the external node in an array based tree? BUT No
-    // access to vec
     bool is_external() const {
-      return 0;
-      //			return vec.at(index)->_is_external;
+      return (index * 2 + 1) >= vbt->vec.getCapacity() ||
+             (vbt->vec.at(index * 2 + 1) == nullptr &&
+              vbt->vec.at(index * 2 + 2) == nullptr);
     }
+
+    bool is_internal() const { return !is_external(); }
 
     friend class Vector_binary_tree;
   };
@@ -86,13 +69,19 @@ public:
 public:
   Vector_binary_tree() : vec{} {}
 
+  ~Vector_binary_tree() {
+    for (int i = 0; i < vec.size(); ++i) {
+      delete vec[i];
+    }
+  }
+
   int size() const { return vec.size(); }
 
   int capacity() const { return vec.getCapacity(); }
 
   bool empty() const { return vec.size() == 0; }
 
-  Position root() const { return Position(0); }
+  Position root() const { return Position(this, 0); }
 
   PositionList positions() const {
     PositionList pl;
@@ -100,68 +89,29 @@ public:
     return pl;
   }
 
-  void add_root() {
-    Node *n = new Node(0);
+  void add_root(const E &e = E{}) {
+    Node *n = new Node(e);
     vec.insert(0, n);
   }
 
-  void expand_external(const Position &p) {
+  void expand_external(const Position &p, const E &left_elem = E{},
+                       const E &right_elem = E{}) {
+    if (p.is_internal()) {
+      throw std::runtime_error("expand internal node");
+    }
     int i = p.index;
-    vec.insert(i * 2 + 1, new Node{}); // default node is external
-    vec.insert(i * 2 + 2, new Node{});
-    vec.at(i)->_is_external = false;
+    vec.insert(i * 2 + 1, new Node{left_elem});
+    vec.insert(i * 2 + 2, new Node{right_elem});
   }
 
-  // in linked tree, dereferencing Position gives element.
-  // in vector based, passing a Position to the vector to get the Node ptr,
-  // which gives element.
-  E &element(const Position &p) const { return vec.at(*p)->elem; }
-
-  // Position itself cannot determine if the node is external. The access to the
-  // node, thus to the vec is necessary.
-  bool is_external(const Position &p) { return vec.at(*p)->_is_external; }
-
-  // TODO
-  //	Position removeAboveExternal(const Position& p){}
-
-  //	void printVector(){
-  //		for(int i=0; i<vec.getCapacity(); ++i){
-  //			std::cout<<vec.at(i).elem<<" ";
-  //		}
-  //		std::cout<<'\n';
-  //	}
-  //
-  //	void printTree(){
-  //		for(auto p: positions() ){
-  //			try{
-  //				std::cout<<"At position "<<(*p)<< ", the value
-  // is
-  //"<<vec.at(*p).elem<<std::endl; }catch(std::runtime_error& e){
-  // std::cout<<e.what()<<std::endl;
-  //			}
-  //		}
-  //	}
 protected:
-  /* Only traverse the node that is not a default node in the array.
-   * Default node has index=-1
-   * */
   void preorder(int index, PositionList &pl) const {
-    pl.push_back(Position(index));
-
-    if ((index * 2 + 1 < vec.getCapacity())) {
-      if (vec.at(index * 2 + 1)->_is_external == false) {
-        preorder(index * 2 + 1, pl);
-      } else { // push the Position of the external node
-        pl.push_back(Position(index * 2 + 1));
-      }
+    pl.push_back(Position{this, index});
+    if (index * 2 + 1 < vec.getCapacity() && vec.at(index + 2 + 1) != nullptr) {
+      preorder(index * 2 + 1, pl);
     }
-
-    if ((index * 2 + 2 < vec.getCapacity())) {
-      if (vec.at(index * 2 + 2)->_is_external == false) {
-        preorder(index * 2 + 2, pl);
-      } else { // push the Position of the external node
-        pl.push_back(Position(index * 2 + 2));
-      }
+    if (index * 2 + 2 < vec.getCapacity() && vec.at(index * 2 + 2) != nullptr) {
+      preorder(index * 2 + 2, pl);
     }
   }
 
@@ -169,4 +119,4 @@ private:
   Vector<Node *> vec;
 };
 
-#endif /* TREE_VBINARYTREE_HPP_ */
+#endif /* VECTOR_BINARY_TREE_H_ */
