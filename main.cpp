@@ -49,10 +49,11 @@
 #include "design_pattern/observer/test_observer.h"
 #include "design_pattern/prototype/test_prototype.h"
 #include "design_pattern/singleton/test_singleton.h"
+#include "design_pattern/template_function/test_euler_tour.h"
 
 #include "binary_search_tree/test_AVL_tree.h"
 #include "binary_search_tree/test_binary_search_tree.h"
-#include "binary_tree/test_tree.h"
+#include "binary_tree/test_binary_tree.h"
 
 #include "smart_pointer/Shared_ptr.h"
 
@@ -76,11 +77,7 @@ int main() {
   //	test_pow();
   //	test_operator_overloading();
 
-  // test_linked_binary_tree_int();
-  // test_linked_binary_tree_entry();
-  // test_linked_binary_tree_string();
-  // test_vector_binary_tree_int();
-  test_vector_binary_tree_entry();
+  test_binary_tree();
 
   //	test_search_tree();
   //	test_AVL_tree();
@@ -94,6 +91,12 @@ int main() {
   //	test_prototype();
   // test_composite();
   //	test_decorator();
+  test_template_function();
+
+  // test_euler_tour_print_expression_linked_binary_tree();
+  // test_euler_tour_print_expression_vecotr_binary_tree();
+  // test_euler_tour_eval_expression_linked_binary_tree();
+  // test_euler_tour_eval_expression_vector_binary_tree();
 
   //	test_variant();
   //	test_factory_method();

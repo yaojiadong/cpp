@@ -115,7 +115,7 @@ public:
     } else {
       std::cout << "(";
       print_expression(p.node->left);
-      std::cout << p.node->elem;
+      std::cout << p.node->elem; // elem has operator<<() defined
       print_expression(p.node->right);
       std::cout << ")";
     }

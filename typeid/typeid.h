@@ -8,24 +8,23 @@
 #ifndef TYPEID_HPP_
 #define TYPEID_HPP_
 
-#include<typeinfo>
-#include<string>
-#include<iostream>
+#include <iostream>
+#include <string>
+#include <typeinfo>
 
 using namespace std;
 
-class Component{
+class Component {
 public:
+  Component(int aa = 0) : a{aa} {}
 
 private:
-	int a;
-
+  int a = 0;
 };
 
-class Ran{
+class Ran {
 public:
 private:
-
 };
 
 void test_typeid();

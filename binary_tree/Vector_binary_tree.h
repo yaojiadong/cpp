@@ -69,8 +69,10 @@ public:
 public:
   Vector_binary_tree() : vec{} {}
 
+  /* Delete all allocated nodes, including the ones that points to null, ie,
+   * nullptr. Check how the reserve() is implemented in Vector.h*/
   ~Vector_binary_tree() {
-    for (int i = 0; i < vec.size(); ++i) {
+    for (int i = 0; i < vec.capacity(); ++i) {
       delete vec[i];
     }
   }
@@ -113,6 +115,17 @@ protected:
     if (index * 2 + 2 < vec.capacity() && vec.at(index * 2 + 2) != nullptr) {
       preorder(index * 2 + 2, pl);
     }
+    /* Alternative */
+    // if (Position(this, index * 2 + 1).is_external()) {
+    //  pl.push_back(Position{this, index * 2 + 1});
+    //} else {
+    //  preorder(index * 2 + 1, pl);
+    //}
+    // if (Position(this, index * 2 + 2).is_external()) {
+    //  pl.push_back(Position{this, index * 2 + 2});
+    //} else {
+    //  preorder(index * 2 + 2, pl);
+    //}
   }
 
 private:
