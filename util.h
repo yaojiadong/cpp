@@ -2,7 +2,8 @@
 
 #include <iostream>
 
-void message(const std::string &msg);
+/* function included in multiple source files must be inline */
+inline void message(const std::string &msg) { std::cout << msg << std::endl; }
 
 template <typename V> void message(const std::string &msg, const V &value) {
   std::cout << msg << value << std::endl;
