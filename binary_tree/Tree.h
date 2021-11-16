@@ -7,7 +7,7 @@
 
 /**
  * This header is not intended to be included in any other files.
- * It only presents a Tree interface.
+ * It only presents an interface of a general. Later we focus on binary tree.
  * It can be used as a base class, only has to.
  * 1. add virtual to the functions that are to be overridden
  * 2. add virtual destructor
