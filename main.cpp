@@ -32,12 +32,12 @@
 #include "union/test_tagged_union.h"
 #include "variant/variant.h"
 
-#include "data_structure/Array_stack.h"
-#include "data_structure/Deque.h"
-#include "data_structure/Doubly_linked_list.h"
-#include "data_structure/Iterator_doubly_linked_list.h"
-#include "data_structure/List_stack.h"
-#include "data_structure/Stack.h"
+#include "container/Array_stack.h"
+#include "container/Deque.h"
+#include "container/Doubly_linked_list.h"
+#include "container/Iterator_doubly_linked_list.h"
+#include "container/List_stack.h"
+#include "container/Stack.h"
 
 #include "design_pattern/abstract_factory/test_abstract_factory.h"
 #include "design_pattern/adapter/test_adapter.h"
@@ -91,7 +91,7 @@ int main() {
   //	test_prototype();
   // test_composite();
   //	test_decorator();
-  test_template_function();
+  // test_template_function();
 
   // test_euler_tour_print_expression_linked_binary_tree();
   // test_euler_tour_print_expression_vecotr_binary_tree();

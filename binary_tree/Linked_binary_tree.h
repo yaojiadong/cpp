@@ -346,12 +346,20 @@ protected:
     pl.push_back(Position(node));
   }
 
+  // void inorder(Node *node, PositionList &pl) const {
+  //  if (node->left != nullptr)
+  //    inorder(node->left, pl);
+  //  pl.push_back(Position(node));
+  //  if (node->right != nullptr)
+  //    inorder(node->right, pl);
+  //}
+
   void inorder(Node *node, PositionList &pl) const {
-    if (node->left != nullptr)
+    if (node) {
       inorder(node->left, pl);
-    pl.push_back(Position(node));
-    if (node->right != nullptr)
+      pl.push_back(Position(node));
       inorder(node->right, pl);
+    }
   }
 
   /* It is a demo of how using euler_order traversal. The exmaple of using it
