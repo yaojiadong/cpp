@@ -13,9 +13,9 @@
 
 class Compression_decorator : public Data_source_decorator{
 public:
-	Compression_decorator(std::shared_ptr<IData_source> ds):Data_source_decorator(ds){}
-	virtual void write_data(std::string& data) override {std::cout << "Compress data and then write to disk\n"; Data_source_decorator::write_data(data);}
-	virtual std::string read_data() const override {std::cout << "Read data and then decompress it\n"; return Data_source_decorator::read_data();}
+	Compression_decorator(const std::shared_ptr<IData_source> &ds):Data_source_decorator(ds){}
+	virtual void write_data(std::string& data) override {std::cout << "Data compressed\n"; Data_source_decorator::write_data(data);}
+	virtual void read_data() const override {Data_source_decorator::read_data(); std::cout << "Data read and decompressed...\n";}
 
 };
 
