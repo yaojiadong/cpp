@@ -16,7 +16,7 @@
 class File_data_source : public IData_source{
 public:
 	File_data_source(const std::string &s):filename{s}{}
-	virtual void write_data(const std::string &data) override {std::cout << "Write data: " << data << " to "<< filename <<"\n";}
+	virtual void write_data(std::string &data) override {std::cout << "Write data: " << data << " to "<< filename <<"\n";}
 	virtual void read_data() const override {std::cout << "Read data from file: " << filename << "\n"; return "";}
 
 private:
