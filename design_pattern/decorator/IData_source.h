@@ -13,8 +13,8 @@
 class IData_source{
 public:
 	virtual ~IData_source(){}
-	virtual void write_data(std::string& data) = 0;
-	virtual std::string read_data() const = 0;
+	virtual void write_data(const std::string &data) = 0;
+	virtual void read_data() const = 0;
 };
 
 
