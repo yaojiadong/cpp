@@ -1,0 +1,2 @@
+/usr/bin/ar qc libdecorator.a CMakeFiles/decorator.dir/test_decorator.cpp.o
+/usr/bin/ranlib libdecorator.a

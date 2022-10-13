@@ -1,0 +1,11 @@
+/root/cpp/build/CMakeFiles/main.dir
+/root/cpp/build/CMakeFiles/edit_cache.dir
+/root/cpp/build/CMakeFiles/rebuild_cache.dir
+/root/cpp/build/design_pattern/CMakeFiles/edit_cache.dir
+/root/cpp/build/design_pattern/CMakeFiles/rebuild_cache.dir
+/root/cpp/build/design_pattern/decorator/CMakeFiles/decorator.dir
+/root/cpp/build/design_pattern/decorator/CMakeFiles/edit_cache.dir
+/root/cpp/build/design_pattern/decorator/CMakeFiles/rebuild_cache.dir
+/root/cpp/build/design_pattern/adapter/CMakeFiles/adapter.dir
+/root/cpp/build/design_pattern/adapter/CMakeFiles/edit_cache.dir
+/root/cpp/build/design_pattern/adapter/CMakeFiles/rebuild_cache.dir

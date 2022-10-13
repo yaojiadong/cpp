@@ -1,0 +1,1 @@
+/usr/bin/g++ -g CMakeFiles/main.dir/main.cpp.o -o main  design_pattern/decorator/libdecorator.a design_pattern/adapter/libadapter.a 

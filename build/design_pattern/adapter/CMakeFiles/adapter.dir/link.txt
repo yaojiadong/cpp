@@ -1,0 +1,2 @@
+/usr/bin/ar qc libadapter.a CMakeFiles/adapter.dir/test_adapter.cpp.o
+/usr/bin/ranlib libadapter.a
