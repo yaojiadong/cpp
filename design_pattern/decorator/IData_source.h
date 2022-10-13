@@ -10,12 +10,12 @@
 
 #include <string>
 
-class IData_source{
+class IData_source
+{
 public:
-	virtual ~IData_source(){}
+	virtual ~IData_source() {}
 	virtual void write_data(std::string &data) = 0;
 	virtual void read_data() const = 0;
 };
-
 
 #endif /* DESIGN_PATTERN_DECORATOR_DATA_SOURCE_H_ */
